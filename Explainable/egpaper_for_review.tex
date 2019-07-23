@@ -289,7 +289,7 @@ the pixel-wise values of the true (unknown) segmentation mask $s$
 follow a spatially stationnary binomial distribution whose expected value, 
 averaged over the spatial dimensions of $x$, is given by $y$ following:
 $$
-s_{hw} \tilde{a} \mathbb{B}(f(y)),
+s_{hw} \sim \mathbb{B}(f(y)),
 $$
 
 in which we introduced a target function $f$, which we will discuss below.
@@ -530,8 +530,15 @@ patterns characterizing the surface adhesive potency.
 
 \subsection{Investigation of hypothesis functions}
 
-% Train with simplest hypothesis
-
+In this section, we investigate the effect of the hypothesis function on the accuracy of the model.
+We start by investigating the simplest possible hypothesis, $f(y)=y$, as illustrated in Figure xxx.
+This hypothesis function formulates the idea that for $y=0$, 
+all the  segmentation mask values should be 0, 
+so that the whole surface area should have adhesive power, 
+while for $y=14$, all the segmentation mask values should be $1$, so that 
+the whole surface area should have low adhesive power.
+For each $y$ between 1 and 14, this hypothesis function defines a linear increase
+of the low adhesive potency surface ratio.
 
 \begin{figure}[h]
 	\centering
@@ -541,34 +548,43 @@ patterns characterizing the surface adhesive potency.
 	}
 \end{figure}
 
+Figure xxx compares the hypothesis function to the actual model output on the training, validation and test set.
+First, we observe no overfitting as all datasets yield similar average results.
+Second, we observe that instead of following a linear trend from 0 to 1, 
+the surface ratio seems to evolve more similarly to a squred root or logarithmic function
+with a sharp increase for low $y$ and a slower increase in higher values of $y$.
+It is interesting to note that the same behavior is observed on samples of the training set, 
+for which the model was explicitly trained to reproduce the linear hypothesis function.
+
 % Fine-tune on other hypothesis.
+Finally, we 
 
-
+% Fine-tune on other hypothesis.
+In an other experiment, we show that better hypothesis functions (like the squared root evolution), 
+yields higher accuracy.
 
 \section{Discussion \& Conclusion}
 
 % Summary of the paper
-
-
+In this paper, we have argued that deep neural networks can be used to help explain the process behind low-level recognition tasks.
+We have focused on the task of assessing the adhesive potency of copper surface for PCB manufacturing.
 
 % Success of the classification
-
+We have shown that an unrestricted classifier can outperform a human expert on the task of assessing the surface rougness.
 
 
 % Potential help of visualization
-
+In addition, we proposed a method to visualize the attention of the deep neural network.
 
 
 % Loss of accuracy of the model
-
-
-
-% Constraining 
-
-
+By constraining the model architecture, we argued that we can use the test accuracy 
+as a proxy metric to test different hypothesis of the surface response to different manufacturing processes.
 
 % Limits of the assumption
+However, this is still preliminary steps.
 
+Many of the assumptions we made are not realistic (Binomial distribution, surface ratio).
 
 
 
