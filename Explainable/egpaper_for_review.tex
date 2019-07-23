@@ -165,7 +165,6 @@ Electronic substrates are organized in a multi-layered structure in which each l
 \includegraphics[width=0.9\linewidth]{"./figures/Figure1"}
 \caption{
 Illustration of a typical eletric circuit board.
-
 }
 \end{figure}
 
@@ -226,6 +225,30 @@ In all our following experiments, we have split the full dataset $\mathcal{D}$ i
 
 \subsection{Baseline}
 
+We start by establishing a strong baseline for our study.
+The baseline architecture follows standard convolutional network designs for image classification.
+This architecture, illustrated in Figure 4, is made of several residual blocks 
+sequentially interleaved with max pooling operations.
+Each residual block consists of $n$ repetitions of a sequence of 
+$3 \times 3$ Convolution, Batch Normalization and ReLU layers,
+followed by a residual skip connection.
+We set $N$ residual blocks between every max pooling layer
+and we denote by $d$ the number of pooling layers.
+Hence, the full depth $D$ of the network (in number of convolution layers) 
+is given by $D=d \times n \times N +1$, where the term $1$ corresponds to the
+initial $3 \times 3$ Convolution layer happening before the first pooling operation.
+Finally, the top layer of the network is made of a global average pooling layer 
+followed by a linear softmax layer with output dimension 15 corresponding to our number of classes.
+For simplicity and contrary to standard practices, we keep the number of channels $c$ constant 
+in all layers of the network.
+
+With this parameterization, our network is fully specified by the four hyper parameters $c$, $d$, $n$ and $N$.
+We then perform a grid search over these hyper parameters to identify the best performing architecture.
+The details of this architecture search are given in the experiment section.
+As we shall see then, the best performing architecture performs significantly better than human experts.
+However, the decision process through which this model reach such a high accuracy is entirely unclear,
+as the distributed nature of the model's internal representations leaves little space for interpretability.
+The remainder of this section details our attempt to bring interpretability to the network's processing.
 
 \subsection{Assumptions}
 % xxx
