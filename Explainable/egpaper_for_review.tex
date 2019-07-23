@@ -24,41 +24,46 @@
 \begin{document}
 
 %%%%%%%%% TITLE
-\title{Assisting human experts in the interpretation of their visual process: A case study on assessing copper sheet surface adhesive potency}%
+\title{Assisting human experts in the interpretation of their visual process: A case study on assessing copper surface adhesive potency}%
 
 \author{
 Tristan Hascoet\\
 Kobe University\\
 {\tt\small tristan@people.kobe-u.ac.jp}
 \and
-To-san\\
+Deng Xuejiao\\
 Kobe University\\
-{\tt\small xxx}
+{\tt\small dengxuejiao1005@yahoo.co.jp}
+\and
+Kiyoto Tai\\
+MEC\\
+%email\\
+%{\tt\small xxx}
 \and
 Sachiko Nakamura\\
-xxx\\
-xxx\\
-{\tt\small xxx}
+MEC\\
+%email\\
+%{\tt\small xxx}
 \and
 Tomoko Hayashi\\
-xxx\\
-xxx\\
-{\tt\small xxx}
+MEC\\
+%email\\
+%{\tt\small xxx}
 \and
 Mari Sugiyama\\
-xxx\\
-xxx\\
-{\tt\small xxx}
+MEC\\
+%email\\
+%{\tt\small xxx}
 \and
 Yasuo Ariki\\
-xxx\\
-xxx\\
-{\tt\small xxx}
+Kobe University\\
+%xxx\\
+%{\tt\small xxx}
 \and
 Tetusya Takiguchi\\
-xxx\\
-xxx\\
-{\tt\small xxx}
+Kobe University\\
+%xxx\\
+%{\tt\small xxx}
 }
 
 \maketitle
@@ -220,7 +225,6 @@ However, we do not know the \textit{exact} impact of the stress test on the surf
 
 \subsection{Dataset and Notations}
 
-
 In all our following experiments, we have split the full dataset $\mathcal{D}$ into a training, validation and test set $\mathcal{D}=\mathcal{D}_{tr} \cup \mathcal{D}_{val} \cup \mathcal{D}_{te}$ so that the number of images per label $y_i$ in each set is 40, 5 and 5 respectively.
 
 \subsection{Baseline}
@@ -242,38 +246,175 @@ followed by a linear softmax layer with output dimension 15 corresponding to our
 For simplicity and contrary to standard practices, we keep the number of channels $c$ constant 
 in all layers of the network.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{"./figures/Figure1"}
+	\caption{
+		Illustration of our baseline architecture.
+	}
+\end{figure}
+
 With this parameterization, our network is fully specified by the four hyper parameters $c$, $d$, $n$ and $N$.
-We then perform a grid search over these hyper parameters to identify the best performing architecture.
-The details of this architecture search are given in the experiment section.
-As we shall see then, the best performing architecture performs significantly better than human experts.
-However, the decision process through which this model reach such a high accuracy is entirely unclear,
-as the distributed nature of the model's internal representations leaves little space for interpretability.
-The remainder of this section details our attempt to bring interpretability to the network's processing.
+We performed a grid search over these hyper parameters to select the best performing architecture.
+The details of this architecture search are given in the experiment section,
+and, as we shall see then, the best performing architecture performs significantly better than human experts.
+However, the decision process through which this model reaches such a high accuracy is entirely opaque
+as the distributed nature of the model's internal representations provides little interpretability.
+The remainder of this section details our attempt to design an architecture that can provide 
+useful explanations of the process through which high accuracy recognition can be performed.
 
 \subsection{Assumptions}
-% xxx
+% Basic idea
+%We start by formally stating the assumptions on which rely our analysis.
+%Our proposed method is based on the idea that classifying 
+The basic idea behind our method is similar to the visual insights provided by the
+visualization method of \cite{} and the attention mechanisms in visual models 
+for image captioning and question answering tasks:
+We would like to evaluate the contribution of each input pixel to the final classification decision. 
+%Having such a visual explanation could help us explain the model's decision process xxx
 
+To do so, we modify our initial problem formulation into a segmentation task:
+Given an input $x \in \mathbb{R}^{h \times w}$, we want to design a model that outputs 
+a segmentation mask $s \in \mathbb{R}^{h \times w}$ assessing the contribution of each inidivual pixel to the output adhesive potency score (i.e., the output class $y$).
+Training a typical segmentation model for this task would require ground truth 
+segmentation masks $s$ for each image $x$ of the training set.
+However, manually annotating ground truth segmentation masks for this task is not feasible, 
+as human experts are not able to provide such fine-grained annotations.
+Instead, we have to train the segmentation given a single groud truth label $y_i$ per image.
 
-\subsection{Architecture restriction}
+In order to do so, we make the following assumption:
+\textbf{Assumption 1}: 
+For a given image $x$ with label $y$, 
+the pixel-wise values of the true (unknown) segmentation mask $s$
+follow a spatially stationnary binomial distribution whose expected value, 
+averaged over the spatial dimensions of $x$, is given by $y$ following:
+$$
+s_{hw} \tilde{a} \mathbb{B}(f(y)),
+$$
 
+in which we introduced a target function $f$, which we will discuss below.
 
+%For a given image, we suppose the existence of an unknown ground truth binary that assigns a value of 1 to regions of
+In other words, we suppose that there exists a true binary segmentation map
+s assigning to each individual pixel of $x$ an adhesive potency score of 0 
+in regions of the surface providing low adhesive potency (i.e. smooth copper surface areas)
+and a value of 1 in regions of the surface providing high adhesive potency (i.e. rough copper surface areas).
+The adhesive potency score of an entire image is then given by the average of its pixel-wise score,
+and this average value is given by the image label $y$.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{"./figures/Figure1"}
+	\caption{
+		Illustration of the segmentation model architecture.
+	}
+\end{figure}
 
-\subsection{Evaluating Different Hyptohesis}
-% xxx
+Figure xxx provides a visual illustration of this idea.
+For each image, we suppose the existence of such binary mask $s$
+quantifying the adhesive potency of local areas of the surface.
+The average value of the binary mask $s$ amounts to the ratio of the
+copper surface covered in white (i.e. with value 1, corresponding to high adhesive potency).
+Our assumption means that this ratio stays constant for different images $x$ sharing a similar label $y$,
+and takes a value given by the target function $f$.
 
+\subsection{Architecture}
+% 
+%We modify the baseline architecture presented in Section xxx to output binary segmentation maps.
+In this section, we present the architecture we use 
+to compute binary segmentation masks from input images.
+Our architecture extends the baseline architecture presented in Section xxx,
+with an ascending path that progressively upsamples the output
+of the descending path, similar to the Unet architecture \cite{}.
+The expanding path is the exact symmetric of the descending path,
+with bilinear upsampling layers instead of max pooling.
+Different from the UNet architecture, and following previous works \cite{},
+we merge the outputs of the descending path modules with the inputs of the ascending path 
+by summation instead of concatenation and use valid convolutions 
+to preserve the spatial resolution of the output.
+Finally, we add a sigmoid layer after the last convolutions to bound the output values between 0 and 1.
+Figure xxx illustrates this architecture.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{"./figures/Figure1"}
+	\caption{
+		Illustration of the segmentation model architecture.
+	}
+\end{figure}
 
+\subsection{Loss function}
+
+Given a model $M_{\theta}$, and a training dataset of labeled samples $\mathcal{D_{tr}}={(x_i, y_i)}$,
+learning is done by minimizing the following expectation over the model's parameters $\theta$:
+
+$$\theta^* = argmin_{\theta} \mathbb{E}_{x,y \in \mathcal{D_tr}} ||m_{\theta}(x) - f(y) ||^2 $$
+
+AS we shall see in the next subsection, we use a hypothesis function $g$ 
+as an approximation of the true target function $f$, to which we do not have access, 
+so that the actual training loss used to learn the model parameters $\theta$ is:
+
+$$\theta^* = argmin_{\theta} \mathbb{E}_{x,y \in \mathcal{D_tr}} ||m_{\theta}(x) - g(y) ||^2 $$
+
+\subsection{Hypothesis function}
+
+% Intro
+In section xxx, we have made the assumption 
+that labels $y$ provide us with the expected value 
+of the true binary segmentation masks through a target function $f$.
+In this section, we discuss the role of this target function.
+
+% What does this target mean?
+The target function $f$ defines the evolution of the copper surface adhesive potency with $y$ as the surface ratio of high adhesive potency $\mathbb{E}_{h,w}s_{hw}$.
+$f$ is an ideal function of which we have supposed the existence, 
+but to which we can not have access,
+as we do not know the influence of the manufacturing process on the copper's surface.
+
+We thus introduce a hypothesis function $g$ approximating $f$,
+which we aim to estimate from the labeled data.
+Although we do not have access to $f$, we know several of its characteristics,
+which we can use to reduce the search space of hypothesis functions $g$.
+
+In section xxx, we established that for all $i$, copper surfaces with label $i+1$ have lower 
+adhesive $i-1$ have lower adhesive potency than copper sheets of label $i$.
+Hence, we know that $f$ is a monotonically decreasing function.
+We can thus restrict our search of hypothesis function $g$ to monotonically decreasing function.
+Second, as $f$ describes the ideal, true evolution of the copper surface statistics with $y$,
+so that training an ideal model with the supervision signal provided by $f$ should yield to zero test errors.
+Hence training a segmentation model with a hypothesis $g \approx f$ should lead to low test errors.
+This means that we can use the error of the model on the held out validation dataset as a proxy measure on
+the validity of the hypothesis function $g$.
+
+In the experiment section, we evaluate the model errors with different hand-crafter hypothesis functions $g$.
+In future work, we aim to learn the hypothesis function $g$ together with the model parameters.
 
 
 \section{Related Work}
-Although deep neural networks have achieved a great success on a variety of challenging visualization tasks in recent years, our understanding of how these neural network models is far from enough to interpret.
-The pursuit of figuring out what is learned for each layer of models and how trained neural network models really "think" never stops.
+
+% Intro
+We identify three different lines of research that share similarities with our study:
+Explainabality of learned visual representations, 
+weak supervision of segmentation models and 
+machine learning applications for material science.
+Our can be seen as a weakly supervised approach to provide material 
+experts with strong supports for interpretable decision, 
+which falls at the intersection of these three research lines.
+We briefly present some of these works in the following subsections
+
+\subsection{Explaining CNN representations}
+Although deep neural networks have achieved a great success on a variety 
+of challenging visualization tasks in recent years, 
+our understanding of how these neural network models is far from enough to interpret.
+The pursuit of figuring out what is learned for each layer of models 
+and how trained neural network models really "think" never stops.
 
 %% Efforts to understand hidden representations
 % Visualization works.
  % Jason Yosinski et al.,2015,understanding neural network through deep visualization
-Jason Yosinski et al. provide two useful tools for visualizing and interpreting neural nets. One is to visualize  the activations produced on each layer of a trained convnet as it processes an image or video, and the other enables visualizing features at each layer of a DNN via regularized optimization in image space.
+Jason Yosinski et al. provide two useful tools for visualizing and interpreting neural nets. 
+One is to visualize  the activations produced on each layer of a trained convnet as it 
+processes an image or video, and the other enables visualizing 
+features at each layer of a DNN via regularized optimization in image space.
  % activation atlas https://distill.pub/2019/activation-atlas/
  %%(Shan Carter et al.2019)
 Shan Carter et al. create an explorable activation atlas of features the network has learned, by using feature inversion to visualize millions of activations from an image classification network, which can reveal how the network typically represents some concepts.
@@ -288,21 +429,7 @@ Trevor Darrel et al. build  models (such as Pointing and Justification-based exp
 TensorFlow provides an attention-based model, which enables us to see what parts of the image the model focuses on as it generates a caption.
 %% Deep learning for scientific discovery
 
-Deep learning has showed remarkable success on many important learning problems in chemistry, drug discovery, biology and materials science.
-
- % Material sciences
-   % Discover new materials or properties (messaging passing deep networks by gilmer)
-   %%Justin Gilmer,2017, Neural Message Passing for Quantum Chemistry
-A general framework for supervised learning on graphs called Message Passing Neural Networks (MPNNs) is widely used on neural computation for predicting quantum states of molecules.
-   % Drug discovery: Find molecules useful by predicting their property
-   %%Dibyendu Dana et al.,2018, Deep Learning in Drug Discovery and Medicine;Scratching the Surface
-   %%Jessica Vamathevan et al.,2019, Applications of machine learning in drug discovery and development
-Drug discovery is also benifiting from the development of artificial intelligence technology, which is automating the invention of new chemical entities and the mining of large databases, in drug design and molecular medicine field.  
-   % Protein folding
-Deep learning approaches such as DeepMind's AlphaFold are helpful for scientists to deal with the "protein folding problem", not only predicting the intricate 3D structure of a protein but also predicting the physical properties of a protein structure, and are making significant progress on one of the core challenges in biology.
-   % THIS ONE New Materials for batteries
-   %% 
-In the field of materials science, deep neural networks have also been receiving inreasing attention and have achieved great improvements, for example, in material property prediction and new materials discovery for batteries.
+\subsection{Weakly Supervised Segmentation}
 
 %% Segmentation from lazy labels.
 An other point we should pay attention to is different labelling strategies in conventional supervised learning.
@@ -311,42 +438,140 @@ Typically speaking, it's often assumed that each instance is associated with one
 % Detection with weak labels
 %%Matthew B.Blaschko et al., 2010,Simultaneous Object Detection and Ranking with Weak Supervision
 
-   %%Ross B. Girshick et al., 2011,Object Detection with Grammar Models
-   %%Bharath Hariharan et al.,2014,Simultaneous Detection and Segmentation
-   %%Hakan Bilen et al.,2016,Weakly Supervised Deep Detection Networks
+%%Ross B. Girshick et al., 2011,Object Detection with Grammar Models
+%%Bharath Hariharan et al.,2014,Simultaneous Detection and Segmentation
+%%Hakan Bilen et al.,2016,Weakly Supervised Deep Detection Networks
 
-  % segmentation weak label https://arxiv.org/pdf/1904.01636.pdf
-   %%Eugene Vorontsov et al., 2019, Boosting segmentation with weak supervision from image-to-image translation
+% segmentation weak label https://arxiv.org/pdf/1904.01636.pdf
+%%Eugene Vorontsov et al., 2019, Boosting segmentation with weak supervision from image-to-image translation
 Eugene et al. propose a semi-supervised framework that employs image-to-image translation between weak labels.
-  % Semi-supervised learning for object detection or semantic segmentation
-   %%Yuxing Tang et al.,2016, Large Scale Semi-supervised Object Detection using Visual and Semantic Knowledge Transfer
+% Semi-supervised learning for object detection or semantic segmentation
+%%Yuxing Tang et al.,2016, Large Scale Semi-supervised Object Detection using Visual and Semantic Knowledge Transfer
 Yuxing Tang et al. build a similarity-based knowledge transfer mode trying to investigate whether knowledge about visual and semantic similarities of object categories can help improve the peformance of detectors trained in a weakly supervised setting.
 
 % Our work = Merge segmentation from lazy labels and scientific discovery
-  %% Rihuan Ke et al., 2019, A multi-task U-net for segmentation with lazy labels
+%% Rihuan Ke et al., 2019, A multi-task U-net for segmentation with lazy labels
 The most related work with ours is Rihuan Ke's[*] in which they present a semi-supervised learning strategy for segmentation with lazy labels and develop a multi-task learning framework to integrate the instance detection, separation and segmentation within a deep neural network.
 
-Our work aim to merge segmentation with lazy labels into scientific discovery and provide material experts with strong supports for interpretable decision.
+\subsection{Machine Learning for Material Science}
+
+Deep learning has showed remarkable success on many important 
+learning problems in chemistry, drug discovery, biology and materials science.
+
+In the field of materials science, deep neural networks have also been receiving inreasing attention and have achieved great improvements, for example, in material property prediction and new materials discovery for batteries.
+% Material sciences
+% Discover new materials or properties (messaging passing deep networks by gilmer)
+%%Justin Gilmer,2017, Neural Message Passing for Quantum Chemistry
+%A general framework for supervised learning on graphs called Message Passing Neural Networks (MPNNs) is widely used on neural computation for predicting quantum states of molecules.
+   % Drug discovery: Find molecules useful by predicting their property
+   %%Dibyendu Dana et al.,2018, Deep Learning in Drug Discovery and Medicine;Scratching the Surface
+   %%Jessica Vamathevan et al.,2019, Applications of machine learning in drug discovery and development
+%Drug discovery is also benifiting from the development of artificial intelligence technology, which is automating the invention of new chemical entities and the mining of large databases, in drug design and molecular medicine field.  
+   % Protein folding
+%Deep learning approaches such as DeepMind's AlphaFold are helpful for scientists to deal with the "protein folding problem", not only predicting the intricate 3D structure of a protein but also predicting the physical properties of a protein structure, and are making significant progress on one of the core challenges in biology.
+% THIS ONE New Materials for batteries
+%% 
 
 \section{Experiments}
-% xxx
-xxx
 
-\subsection{Recognition results}
+\subsection{Classification results}
 % xxx
-xxx
+We start by evaluating the baseline classification model described in Section xxx and illustrated in Figure xxx.
+The hyperparameters $n$, $N$, $d$, and $c$ of the classifier architecture 
+were obtained by a grid search within the limits of a 12GB Nvidia GPU memory size .
+The model was trained on the training dataset for 200 epochs using the Adam optimizer with default parameterization.
 
-\subsection{Hypothesis testing}
-% xxx
-xxx
+We compare the classification outputs of the baseline model to those 
+of an expert material scientist on a blind test.
+The human expert was given the sample images of the training set to practice,
+and we evaluated the expert's answers on the samples of the test set.
 
-\subsection{Hypothesis learning}
-% xxx
-xxx
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{"./figures/Figure1"}
+	\caption{
+		Results of the human evaluation.
+	}
+\end{figure}
 
-\section{Conclusion}
-% xxx
-xxx
+Figure xxx shows the results achieved by the model and Figure xxx shows the results achieved by our baseine model.
+As can be seen in these figures, the model tends predict the manufacturing 
+process more accurately than the human evaluator.
+However, these results should be taken with a grain of caution 
+as the human expert was given little to practice on this specific dataset,
+while the model was selected as the best performing baseline from an extensive parameter search.
+We plan on reconducting the human evaluation in the updated version of this paper.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{"./figures/Figure1"}
+	\caption{
+		Results of the model evaluation.
+	}
+\end{figure}
+
+Interestingly, however, the human expert seems to accurately recognize 
+the surfaces of highest adhesive potency as seen in the upward trends of his results 
+for low $y$ values. For example, he easily identified the surface for $y=0$.
+On the other hand, his guesses for low adhesive potency are much more random.
+
+This is in stark contrast with the classifier accuracy, which perfectly identifies
+the low adhesive potency surfaces (high $y$ values), but consistently misclassifies 
+surfaces of high adhesive potency (i.e.; for $y=1$ and $y=2$).
+
+\subsection{Visualization of Segmentation Results}
+
+% Visualize
+To motivate our results, Figure xxx illustrates an output of the segmentation model on a small patch of an input image $x$.
+To a novice observer, the model seems to assign lower adhesive potential to smoother regions of the input.
+In futur work, we plan on further exploring these visualizations to better understand the 
+patterns characterizing the surface adhesive potency.
+
+
+\subsection{Investigation of hypothesis functions}
+
+% Train with simplest hypothesis
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{"./figures/Figure1"}
+	\caption{
+		Results of the model evaluation.
+	}
+\end{figure}
+
+% Fine-tune on other hypothesis.
+
+
+
+\section{Discussion \& Conclusion}
+
+% Summary of the paper
+
+
+
+% Success of the classification
+
+
+
+% Potential help of visualization
+
+
+
+% Loss of accuracy of the model
+
+
+
+% Constraining 
+
+
+
+% Limits of the assumption
+
+
+
+
 
 {\small
 \bibliographystyle{ieee}
