@@ -1,3 +1,13 @@
-\begin{thebibliography}{}\itemsep=-1pt
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{ke2019multi}
+R.~Ke, A.~Bugeau, N.~Papadakis, P.~Schuetz, and C.-B. Sch{\"o}nlieb.
+\newblock A multi-task u-net for segmentation with lazy labels.
+\newblock {\em arXiv preprint arXiv:1906.12177}, 2019.
+
+\bibitem{yosinski2015understanding}
+J.~Yosinski, J.~Clune, A.~Nguyen, T.~Fuchs, and H.~Lipson.
+\newblock Understanding neural networks through deep visualization.
+\newblock {\em arXiv preprint arXiv:1506.06579}, 2015.
 
 \end{thebibliography}

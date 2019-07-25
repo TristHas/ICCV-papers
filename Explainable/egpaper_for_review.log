@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.30)  25 JUL 2019 12:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.30)  25 JUL 2019 19:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -413,10 +413,6 @@ File: "./figures/Figure3".png Graphic file (type png)
 Package pdftex.def Info: "./figures/Figure3".png used on input line 217.
 (pdftex.def)             Requested size: 213.4209pt x 185.02496pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
 Underfull \hbox (badness 2556) in paragraph at lines 237--239
 []\OT1/ptm/m/n/10 We de-note the dataset de-scribed above as $\OMS/cmsy/m/n/10 
 D \OT1/cmr/m/n/10 =
@@ -462,28 +458,32 @@ Underfull \hbox (badness 1270) in paragraph at lines 535--548
 \OT1/ptm/m/n/10 have also been re-ceiv-ing in-reas-ing at-ten-tion and have
  []
 
-<"./figures/Figure7".png, id=80, 687.56876pt x 324.21124pt>
+
+Underfull \vbox (badness 4940) has occurred while \output is active []
+
+
+<"./figures/Figure7".png, id=83, 687.56876pt x 324.21124pt>
 File: "./figures/Figure7".png Graphic file (type png)
 
 <use "./figures/Figure7".png>
 Package pdftex.def Info: "./figures/Figure7".png used on input line 574.
 (pdftex.def)             Requested size: 213.4209pt x 100.63306pt.
 
-<"./figures/Figure8".png, id=81, 833.1125pt x 370.38374pt>
+<"./figures/Figure8".png, id=84, 833.1125pt x 370.38374pt>
 File: "./figures/Figure8".png Graphic file (type png)
 
 <use "./figures/Figure8".png>
 Package pdftex.def Info: "./figures/Figure8".png used on input line 590.
 (pdftex.def)             Requested size: 213.4209pt x 94.87894pt.
  [6 <./figures/Figure7.png> <./figures/Figure8.png>] <"./figures/Figure9".png, 
-id=94, 478.78876pt x 320.19624pt>
+id=98, 478.78876pt x 320.19624pt>
 File: "./figures/Figure9".png Graphic file (type png)
 
 <use "./figures/Figure9".png>
 Package pdftex.def Info: "./figures/Figure9".png used on input line 615.
 (pdftex.def)             Requested size: 213.4209pt x 142.72871pt.
 
-<"./figures/Figure10".png, id=95, 705.63625pt x 337.26pt>
+<"./figures/Figure10".png, id=99, 705.63625pt x 337.26pt>
 File: "./figures/Figure10".png Graphic file (type png)
 
 <use "./figures/Figure10".png>
@@ -494,35 +494,37 @@ Package pdftex.def Info: "./figures/Figure10".png used on input line 635.
 \tf@brf=\write3
 \openout3 = `egpaper_for_review.brf'.
 
-
-
-LaTeX Warning: Empty `thebibliography' environment on input line 3.
-
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 700.
  [8
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 700.
- (./egpaper_for_review.aux)
+
+(./egpaper_for_review.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 700.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 700.
-Package rerunfilecheck Info: File `egpaper_for_review.brf' has not changed.
-(rerunfilecheck)             Checksum: C4E0DDB208A0A488AF3D86A4195B3EF2;396.
 
+
+Package rerunfilecheck Warning: File `egpaper_for_review.brf' has changed.
+(rerunfilecheck)                Rerun to get bibliographical references right.
+
+Package rerunfilecheck Info: Checksums for `egpaper_for_review.brf':
+(rerunfilecheck)             Before: 84FB23515E0167F3003B13AE7F7CC37B;471
+(rerunfilecheck)             After:  587FAD6147238D7F0F7315C03865D6CF;471.
 
 LaTeX Warning: There were undefined references.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 700.
  ) 
 Here is how much of TeX's memory you used:
- 6560 strings out of 492995
- 95411 string characters out of 6132704
- 187573 words of memory out of 5000000
- 9952 multiletter control sequences out of 15000+600000
- 26389 words of font info for 67 fonts, out of 8000000 for 9000
+ 6573 strings out of 492995
+ 95658 string characters out of 6132704
+ 187653 words of memory out of 5000000
+ 9962 multiletter control sequences out of 15000+600000
+ 28073 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,9n,26p,751b,322s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,9n,26p,751b,328s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
@@ -540,10 +542,10 @@ t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texmf
 nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/
 urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on egpaper_for_review.pdf (8 pages, 3235192 bytes).
+Output written on egpaper_for_review.pdf (8 pages, 3237065 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
- 48 named destinations out of 1000 (max. 500000)
+ 185 PDF objects out of 1000 (max. 8388607)
+ 138 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

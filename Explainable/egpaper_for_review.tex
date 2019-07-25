@@ -31,7 +31,7 @@
 		Kobe University\\
 		{\tt\small tristan@people.kobe-u.ac.jp}
 		\and
-		Deng Xuejiao\\
+		Xuejiao Deng\\
 		Kobe University\\
 		{\tt\small dengxuejiao1005@yahoo.co.jp}
 		\and
@@ -201,7 +201,7 @@ First we aim to automate the evaluation of a copper sheet adhesive potency from 
 Second, we aim to better understand the process through which  
 Towards this goal, we built a dataset of microscopic images of copper surfaces, which we detail below.
 
-We imaged copper surfaces using Scanning Electron Microscopy (SEM) at a resolution of $xxx$ micro meters.
+We imaged copper surfaces using Scanning Electron Microscopy (SEM) at a resolution of $100$ nm.
 To investigate the impact of different manufacturing processes on the copper surface, 
 we applied 16 different etching solutions, with decreasing etching power, to the copper surface.
 For each of these solutions, we captured 50 SEM images of $960 \times 1280$ pixels so that the full dataset
@@ -483,7 +483,7 @@ one is focused on visualization and the ther one focused on generating natural l
 More related to our work is the line of work focused on visualizing neural network hidden activations
 % Jason yo
 % Jason Yosinski et al.,2015,understanding neural network through deep visualization
-Yosinski \textit{et al.} \cite{} provide two useful tools for visualizing and interpreting neural nets. 
+Yosinski \textit{et al.} \cite{yosinski2015understanding} provide two useful tools for visualizing and interpreting neural nets. 
 One is to visualize  the activations produced on each layer of a trained convnet as it 
 processes an image or video, and the other enables visualizing 
 features at each layer of a DNN via regularized optimization in image space.
@@ -525,7 +525,7 @@ Yuxing Tang et al. build a similarity-based knowledge transfer mode trying to in
 
 % Our work = Merge segmentation from lazy labels and scientific discovery
 %% Rihuan Ke et al., 2019, A multi-task U-net for segmentation with lazy labels
-The most related work with ours is Rihuan Ke's[*] in which they present a semi-supervised learning strategy for segmentation with lazy labels and develop a multi-task learning framework to integrate the instance detection, separation and segmentation within a deep neural network.
+The most related work with ours is Rihuan Ke's\cite{ke2019multi} in which they present a semi-supervised learning strategy for segmentation with lazy labels and develop a multi-task learning framework to integrate the instance detection, separation and segmentation within a deep neural network.
 
 \subsection{Machine Learning for Material Science}
 %todo
@@ -595,12 +595,12 @@ We plan on re-conducting the human evaluation in the updated version of this pap
 
 Interestingly, however, the human expert seems to accurately recognize 
 the surfaces of highest adhesive potency as seen in the upward trends of his results 
-for low $y$ values. For example, he easily identified the surface for $y=0$.
+for low $t$ values. For example, he easily identified the surface for $t=0$.
 On the other hand, his guesses for low adhesive potency are much more random.
 
 This is in stark contrast with the classifier accuracy, which perfectly identifies
-the low adhesive potency surfaces (high $y$ values), but consistently misclassifies 
-surfaces of high adhesive potency (i.e.; for $y=1$ and $y=2$).
+the low adhesive potency surfaces (high $t$ values), but consistently misclassifies 
+surfaces of high adhesive potency (i.e.; for $t=1$ and $t=2$).
 
 \subsection{Visualization of Segmentation Results}
 
@@ -622,12 +622,12 @@ patterns characterizing the surface adhesive potency.
 %todo
 In this section, we question the role of the hypothesis function on the accuracy of the model.
 As illustrated in Figure 10, we investigate the simplest possible hypothesis, $f(y)=y$.
-This hypothesis function formulates the idea that for $y=0$, 
+This hypothesis function formulates the idea that for $t=0$, 
 all the  segmentation mask values should be 0, 
 so that the whole surface area should have strong adhesive potency, 
-while for $y=14$, all the segmentation mask values should be $1$, so that 
+while for $t=14$, all the segmentation mask values should be $1$, so that 
 the whole surface area should have low adhesive potency.
-For each $y$ between 1 and 14, this hypothesis function defines a linear increase
+For each $t$ between 1 and 14, this hypothesis function defines a linear increase
 of the low adhesive potency surface ratio.
 
 \begin{figure}[h]
