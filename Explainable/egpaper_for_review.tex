@@ -234,7 +234,7 @@ Precisely defining the visible difference with words is a difficult task.
 
 \subsection{Dataset and Notations}
 %todo use the correct number of weeks
-We denote the dataset described above as $\mathcal{D}=\{(x_i,t_i) | i \in [1,xxx] \}$ where $x$ denote images $x \in \mathbb{R}^{H \times W}$ and labels $y \in [0,xxx]$ corresspond to the time of stress test applied.
+We denote the dataset described above as $\mathcal{D}=\{(x_i,t_i) | i \in [1,800] \}$ where $x$ denote images $x \in \mathbb{R}^{H \times W}$ and labels $y \in [0,16]$ corresspond to the time of stress test applied.
 We split the dataset $\mathcal{D}$ into a training $\mathcal{D}_{tr}$, validation $\mathcal{D}_{val}$ and test $\mathcal{D}_{te}$ set so that the number of images $x$ per label $y$ in each set are 40 for training set, and 5 for the validation and test sets.
 
 \subsection{Baseline}
@@ -345,10 +345,10 @@ In this section, we present the architecture used
 to compute binary segmentation masks from input images.
 Our architecture extends the baseline architecture presented in Section 3.1,
 with an ascending path that progressively upsamples the output
-of the descending path, similar to the UNet architecture \cite{xxx} and illustrated in Figure 6.
+of the descending path, similar to the UNet architecture \cite{ronneberger2015u} and illustrated in Figure 6.
 
 Residual modules of the axcending path are the exact symmetric of their anolog in descending path.
-The ascending path uses bilinear upsampling layers (illustrated in xxx),
+The ascending path uses bilinear upsampling layers 
 instead of the max pooling layers of the descending path.
 Different from the UNet architecture, and following previous works \cite{xxx},
 we merge the outputs of the descending path modules with the inputs of the ascending path 
@@ -479,7 +479,6 @@ one is focused on visualization and the ther one focused on generating natural l
  %% Deep learning for scientific discovery
  
 % Visualization
-%todo
 More related to our work is the line of work focused on visualizing neural network hidden activations
 % Jason yo
 % Jason Yosinski et al.,2015,understanding neural network through deep visualization
@@ -489,18 +488,18 @@ processes an image or video, and the other enables visualizing
 features at each layer of a DNN via regularized optimization in image space.
 % activation atlas https://distill.pub/2019/activation-atlas/
 
-More recently, Carter \textit{et al.} \cite{} propose an explorable activation atlas of vision model's learned feature by using feature inversion to visualize millions of activations from an image classification network
+More recently, Carter \textit{et al.} \cite{xxx} propose an explorable activation atlas of vision model's learned feature by using feature inversion to visualize millions of activations from an image classification network
 Their technique provides insights regarding the network's conceptual representations.
 % attention models for image captioning and visual question answering
 %Yashi Goyal et al., CVPR 2017, Marking the V in VQA Matter:Elevating the Role of Image Understanding in Visual Question Answering
 
 % Original work on visual attention
-Visual attention \cite{} also helps in explaining the process through which model's 
+Visual attention \cite{xxx} also helps in explaining the process through which model's 
 outputs are computed by providing visual clues as to what regions of the input space 
 contribute the most to the final decision. 
 % show attend and tell
 % other visual models in question answering and image captioning
-These have been used to investigate model's operations on image captioning \cite{} and VQA \cite{} tasks,
+These have been used to investigate model's operations on image captioning \cite{xxx} and VQA \cite{xxx} tasks,
 and is similar to the idea behind our segmentation model.
 
 \subsection{Weakly Supervised Segmentation}
