@@ -36,19 +36,20 @@
 		{\tt\small dengxuejiao1005@yahoo.co.jp}
 		\and
 		Kiyoto Tai\\
-		MEC\\
+		MEC Co., Ltd.\\
+		{\tt\small tai295@mec-np.com}
 		\and
 		Yuji Adachi \\
-		MEC \\
+		MEC Co., Ltd. \\
 		\and
 		Sachiko Nakamura\\
-		MEC\\
+		MEC Co., Ltd.\\
 		\and
 		Tomoko Hayashi\\
-		MEC\\
+		MEC Co., Ltd.\\
 		\and
 		Mari Sugiyama\\
-		MEC\\
+		MEC Co., Ltd.\\
 		\and
 		Yasuo Ariki\\
 		Kobe University\\
@@ -62,39 +63,39 @@
 	
 	
 	%%%%%%%%% ABSTRACT
-	\begin{abstract}
-		Deep Neural Networks are often though to lack interpretability due to the distributed nature of their internal representations. In contrast, humans can generally justify, in natural language, for their answer to a visual question with simple common sense reasoning. However, human introspection abilities have their own limits as one often struggles to justify for the recognition process behind our lowest level feature recognition ability: for instance, it is difficult to precisely explain why a given texture seems more characteristic of the surface of a finger nail rather than plastic bottle.
-		In this paper, we showcase an application in which deep learning models can actually  help human experts justify for their own low-level visual recognition process: We study the problem of assessing the adhesive potency of copper sheets from microscopic pictures of their surface . Although highly trained material experts are able to qualitatively assess the surface adhesive potency, they are often unable to precisely justify for their decision process. We present a model that, under careful design considerations, is able to provide visual clues for human experts to understand and justify for their own recognition process. 
-		Not only can our model assist human experts in their interpretation of the surface characteristics, 
-		we show how this model can be used to test different hypothesis of the copper surface response to different manufacturing processes. 
-	\end{abstract}
+\begin{abstract}
+Deep Neural Networks are often though to lack interpretability due to the distributed nature of their internal representations. In contrast, humans can generally justify, in natural language, for their answer to a visual question with simple common sense reasoning. However, human introspection abilities have their own limits as one often struggles to justify for the recognition process behind our lowest level feature recognition ability: for instance, it is difficult to precisely explain why a given texture seems more characteristic of the surface of a finger nail rather than plastic bottle.
+In this paper, we showcase an application in which deep learning models can actually  help human experts justify for their own low-level visual recognition process: We study the problem of assessing the adhesive potency of copper sheets from microscopic pictures of their surface . Although highly trained material experts are able to qualitatively assess the surface adhesive potency, they are often unable to precisely justify for their decision process. We present a model that, under careful design considerations, is able to provide visual clues for human experts to understand and justify for their own recognition process. 
+Not only can our model assist human experts in their interpretation of the surface characteristics, 
+we show how this model can be used to test different hypothesis of the copper surface response to different manufacturing processes. 
+\end{abstract}
 	
 	%%%%%%%%% BODY TEXT
-	\section{Introduction}
-	
-	% Human explanation ability & deep learning flaws.
-	Humans are experts in communicating the reasoning process behind their answer to visual questions.
-	For instance, on typical Visual Question Answering (VQA) samples, 
-	human annotators are often able to convincingly justify, in natural language, the reason 
-	behind their answer to a certain visual question using simple common sense reasoning.
-	%Common sense includes spatial and causal relationships
-	In contrast, deep Learning models are often viewed as black box predictors lacking interpretability 
-	in the sense that existing tools often fail to explain the decision making process behind the model’s predictions.
-	For instance, a deep learning model trained end-to-end on a VQA dataset may be able to provide the same answer as its
-	human counterpart, but the process through which the model reaches this answer is entirely opaque.
-	
-	% Limits of low-level introspection
-	While it is true that humans can justify for their answers on high level reasoning tasks, 
-	humans also often fail to explain the process behind their low-level feature recognition ability:
-	For example, precisely defining the nature of a specific texture 
-	(what are the defining features of a plastic or wooden surface?) 
-	or specific low-level part attributes exhibiting large intra-class variations 
-	(what is the defining features of a "leg" or a "wing"?) is a very difficult task.
-    Humans constantly perform such low-level visual recognition tasks 
-	while being unable to precisely justify for their own recognition process.
+\section{Introduction}
+
+% Human explanation ability & deep learning flaws.
+Humans are experts in communicating the reasoning process behind their answer to visual questions.
+For instance, on typical Visual Question Answering (VQA) samples, 
+human annotators are often able to convincingly justify, in natural language, the reason 
+behind their answer to a certain visual question using simple common sense reasoning.
+%Common sense includes spatial and causal relationships
+In contrast, deep Learning models are often viewed as black box predictors lacking interpretability 
+in the sense that existing tools often fail to explain the decision making process behind the model’s predictions.
+For instance, a deep learning model trained end-to-end on a VQA dataset may be able to provide the same answer as its
+human counterpart, but the process through which the model reaches this answer is entirely opaque.
+
+% Limits of low-level introspection
+While it is true that humans can justify for their answers on high level reasoning tasks, 
+humans also often fail to explain the process behind their low-level feature recognition ability:
+For example, precisely defining the nature of a specific texture 
+(what are the defining features of a plastic or wooden surface?) 
+or specific low-level part attributes exhibiting large intra-class variations 
+(what is the defining features of a "leg" or a "wing"?) is a very difficult task.
+Humans constantly perform such low-level visual recognition tasks 
+while being unable to precisely justify for their own recognition process.
 	
 % Current problem
-In this paper, we present one very practical instance of such situation in the electric circuit industry, 
+In this paper, we present one very practical instance of such situation in the Printed Circuit Boards (PCB) industry, 
 in which expert material scientists are tasked with assessing the adhesive potency of copper surfaces.
 We propose a model that, under careful design considerations, is able to provide visual clues 
 for human experts to understand and justify for their decision process.
@@ -160,23 +161,27 @@ Printed circuit boards (PCBs) are integral part of a wide variety of electronic 
 
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\linewidth]{"./figures/Figure1"}
-	\caption{
-		Illustration of a Printed Circuit Board. 
-	}
+\centering
+\includegraphics[width=0.9\linewidth]{"./figures/Figure1"}
+\caption{
+Illustration of a Printed Circuit Board. 
+Copper circuits are made with various insulators for several purposes.  
+}
 \end{figure}
 
 
 Since PCBs have been required to have higher heat-resistant properties in recent years, copper surface treatment technologies have performed a more and more important role in the manufacturing process. This is because they can enable PCBs  to maintain high copper to resin adhesion even under harsh conditions. Copper surface treatment (copper surface roughening) offers one of the most effective ways to increase adhesion of the interfaces. Copper surface roughening has been widely used for the purpose of increasing adhesion of copper to resins. It produces a unique surface topography which enhances the mechanical bonding of copper to resins, as illustrated in Figure 2.
 
-
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\linewidth]{"./figures/Figure2"}
-	\caption{
-		Illustration of a copper roughness surface. (Left) a smooth surface provides small adhesive surface as the interface between copper, in brown, and the resin, in green is minimal. (Right) a rough surface provides a larger surface at the interface of the resin. Larger contact surface areas provide higher adhesive potency.
-	}
+\centering
+\includegraphics[width=0.9\linewidth]{"./figures/Figure2"}
+\caption{
+Illustration of a copper roughness surface. 
+(Left) a perfectly smooth surface provides small adhesive surface 
+as the interface between copper, in brown, and the resin, in green is minimal. 
+(Right) a rough surface provides a larger surface at the interface of the resin. 
+Larger contact surface areas provide higher adhesive potency.
+}
 \end{figure}
 
 In very broad terms, rough surface allow for stronger bonds 
@@ -199,27 +204,38 @@ Towards this goal, we built a dataset of microscopic images of copper surfaces, 
 We imaged copper surfaces using Scanning Electron Microscopy (SEM) at a resolution of $xxx$ micro meters.
 To investigate the impact of different manufacturing processes on the copper surface, 
 we applied 16 different etching solutions, with decreasing etching power, to the copper surface.
-For each of these solutions, we captured 50 SEM images of $xxx \times xxx$ pixels so that the full dataset
+For each of these solutions, we captured 50 SEM images of $960 \times 1280$ pixels so that the full dataset
 consists of $800$ ($16 \times 50$) images.
 %The etching power of each solution was degraded by a constant factor $\delta$ between each 
-Each image is annotated with a label $y_i \in Y$ corresponding to the etching solution used to shape the copper surface.
-Each solution $y_i$ was obtained by submitting the original solution $y_0$ to an extreme stress test for a period of time $i \times T$.
-Hence, we know that for all $i$ images of copper surfaces with label $y_i$ show higher adhesive potency than the images labelled with $y_{i+1}$.
+Each image is annotated with a label $t$ corresponding to the etching solution used to shape the copper surface.
+Each solution was obtained by submitting the original solution $t=0$ to an extreme stress test for a period of time $t$.
+Hence, we know that for all images of copper surfaces with label $t$ show higher adhesive potency than the images labelled with $t' > t$. 
 However, we do not know the \textit{exact} impact of the stress test on the surface adhesive potency.
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\linewidth]{"./figures/Figure3"}
-	\caption{
-		Illustration of a few images from the dataset. (Top) Full images. (Down) Zoomed-in areas of $200 \times 200$ pixels. (Right) Sample image of label $y=1$. (Left) Sample image of label $y=10$. The difference between both images are minimal to a novice eye.
-	}
+\centering
+\includegraphics[width=0.9\linewidth]{"./figures/Figure3"}
+\caption{
+%Need a cleaner picture: 
+%todo change font
+%todo change label name to t
+%todo Adjust picture size to be similar
+Illustration of a few images from the dataset. 
+(Top) Full images. 
+(Down) Zoomed-in areas of $200 \times 200$ pixels. 
+(Right) Sample image of label $y=1$. 
+(Left) Sample image of label $y=10$. 
+The difference between both images are minimal to an untrained eye.
+Precisely defining the visible difference with words is a difficult task.
+}
 \end{figure}
 
 \section{Method}
 
 \subsection{Dataset and Notations}
-
-In all our following experiments, we have split the full dataset $\mathcal{D}$ into a training, validation and test set $\mathcal{D}=\mathcal{D}_{tr} \cup \mathcal{D}_{val} \cup \mathcal{D}_{te}$ so that the number of images per label $y_i$ in each set is 40, 5 and 5 respectively.
+%todo use the correct number of weeks
+We denote the dataset described above as $\mathcal{D}=\{(x_i,t_i) | i \in [1,xxx] \}$ where $x$ denote images $x \in \mathbb{R}^{H \times W}$ and labels $y \in [0,xxx]$ corresspond to the time of stress test applied.
+We split the dataset $\mathcal{D}$ into a training $\mathcal{D}_{tr}$, validation $\mathcal{D}_{val}$ and test $\mathcal{D}_{te}$ set so that the number of images $x$ per label $y$ in each set are 40 for training set, and 5 for the validation and test sets.
 
 \subsection{Baseline}
 
@@ -241,11 +257,13 @@ For simplicity and contrary to standard practices, we keep the number of channel
 in all layers of the network.
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\linewidth]{"./figures/Figure11"}
-	\caption{
-		Illustration of our baseline architecture.
-	}
+\centering
+\includegraphics[width=0.9\linewidth]{"./figures/Figure4"}
+\caption{
+Illustration of our baseline architecture.
+With our modular architecture definition, 
+the architecture is fully defined by parameters $n$,$N$,$c$ and $d$.
+}
 \end{figure}
 
 With this parameterization, our network is fully specified by the four hyper parameters $c$, $d$, $n$ and $N$.
@@ -259,8 +277,6 @@ useful explanations of the process through which high accuracy recognition can b
 
 \subsection{Assumptions}
 % Basic idea
-%We start by formally stating the assumptions on which rely our analysis.
-%Our proposed method is based on the idea that classifying 
 The basic idea behind our method is similar to the visual insights provided by the
 visualization method of \cite{} and the attention mechanisms in visual models 
 for image captioning and question answering tasks:
@@ -268,120 +284,167 @@ We would like to evaluate the contribution of each input pixel to the final clas
 %Having such a visual explanation could help us explain the model's decision process 
 
 To do so, we modify our initial problem formulation into a segmentation task:
-Given an input $x \in \mathbb{R}^{h \times w}$, we want to design a model that outputs 
-a segmentation mask $s \in \mathbb{R}^{h \times w}$ assessing the contribution of each inidividual pixel to the output adhesive potency score (i.e., the output class $y$).
+Given an input $x \in \mathbb{R}^{H \times W}$, we want to design a model that outputs 
+a segmentation mask $s \in \mathbb{R}^{H \times W}$ assessing the contribution of each inidividual pixel to the output adhesive potency score (i.e., the output class $y$).
 Training a typical segmentation model for this task would require ground truth 
 segmentation masks $s$ for each image $x$ of the training set.
 However, manually annotating ground truth segmentation masks for this task is not feasible, 
 as human experts are not able to provide such fine-grained annotations.
-Instead, we have to train the segmentation given a single ground truth label $y_i$ per image.
-
+Instead, we have to train the segmentation given a single ground truth label $t$ per image.
 In order to do so, we make the following assumption:
-\textbf{Assumption 1}: 
-For a given image $x$ with label $y$, 
-the pixel-wise values of the true (unknown) segmentation mask $s$
+
+\textbf{Assumption}: 
+For a given image $x$ with label $t$, 
+the \textit{pixel-wise} values of the true (unknown) segmentation mask $s$
 follow a spatially stationary binomial distribution whose expected value, 
-averaged over the spatial dimensions of $x$, is given by $y$ following:
-$$
-s_{hw} \sim \mathbb{B}(f(y)),
-$$
+averaged over the spatial dimensions of $x$, is given by $t$ following:
 
-in which we introduced a target function $f$, which we will discuss below.
+\begin{equation}
+  s_{hw} \sim \mathbb{B}(f(t)), \forall h,w,t \in H \times W \times T
+\end{equation}
 
-%For a given image, we suppose the existence of an unknown ground truth binary that assigns a value of 1 to regions of
+in which we introduced a target function $f$, which we shall discuss in Section 3.6.
+
+%For a given image, we suppose the existence of an unknown 
+%ground truth binary that assigns a value of 1 to regions of
 In other words, we suppose that there exists a true binary segmentation map
-s assigning to each individual pixel of $x$ an adhesive potency score of 0 
-in regions of the surface providing low adhesive potency (i.e. smooth copper surface areas)
-and a value of 1 in regions of the surface providing high adhesive potency (i.e. rough copper surface areas).
-The adhesive potency score of an entire image is then given by the average of its pixel-wise score,
-and this average value is given by the image label $y$.
+$s$ assigning to each individual pixel of $x$ a binary adhesive potency score:
+$s$ takes 0 values in regions of the surface providing low adhesive potency (i.e. smooth copper surface areas)
+and 1 values in regions of the surface providing high adhesive potency (i.e. rough copper surface areas).
+The adhesive potency score of an entire image $x$ is thus given by the average of the pixel-wise values,
+and this average value is uniquely defined by the image label $t$.
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\linewidth]{"./figures/Figure5"}
-	\caption{
-		Illustration of the binary segmentation mask.
-	}
+\centering
+\includegraphics[width=0.9\linewidth]{"./figures/Figure5"}
+\caption{
+%todo change y with t
+Illustration of binary segmentation masks. 
+White pixels represent areas of high adhesive potency
+and black surface represent areas of low adhesive potency.
+We make the assumption that the ratio of white surface is 
+constant for different samples (top and bottom) with equal label $t$.
+The exact ratio is defined by the target function $f$.
+}
 \end{figure}
 
 Figure 5 provides a visual illustration of this idea.
 For each image, we suppose the existence of such binary mask $s$
 quantifying the adhesive potency of local areas of the surface.
-The average value of the binary mask $s$ amounts to the ratio of the
-copper surface covered in white (i.e. with value 1, corresponding to high adhesive potency).
-Our assumption means that this ratio stays constant for different images $x$ sharing a similar label $y$,
+The average value of the binary mask $s$ amounts to the ratio of the copper surface covered in white 
+(i.e. with value 1, corresponding to high adhesive potency).
+Our assumption means that this ratio stays constant for different 
+images $x$ sharing a similar label $t$,
 and takes a value given by the target function $f$.
 
 \subsection{Architecture}
+
 % 
 %We modify the baseline architecture presented in Section  to output binary segmentation maps.
-In this section, we present the architecture we use 
+In this section, we present the architecture used 
 to compute binary segmentation masks from input images.
 Our architecture extends the baseline architecture presented in Section 3.1,
 with an ascending path that progressively upsamples the output
-of the descending path, similar to the UNet architecture \cite{}.
-The expanding path is the exact symmetric of the descending path,
-with bilinear upsampling layers instead of max pooling.
-Different from the UNet architecture, and following previous works \cite{},
+of the descending path, similar to the UNet architecture \cite{xxx} and illustrated in Figure 6.
+
+Residual modules of the axcending path are the exact symmetric of their anolog in descending path.
+The ascending path uses bilinear upsampling layers (illustrated in xxx),
+instead of the max pooling layers of the descending path.
+Different from the UNet architecture, and following previous works \cite{xxx},
 we merge the outputs of the descending path modules with the inputs of the ascending path 
-by summation instead of concatenation and use valid convolutions 
-to preserve the spatial resolution of the output.
-Finally, we add a sigmoid layer after the last convolutions to bound the output values between 0 and 1.
-Figure 6 illustrates this architecture.
+by summation, instead of concatenation. 
+We alos use valid convolutions to preserve the spatial resolution of the output.
+Finally, we add a sigmoid layer at the top of the network in order to bound the output values between 0 and 1.
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\linewidth]{"./figures/Figure6"}
-	\caption{
-		Illustration of the segmentation model architecture.
-	}
+\centering
+\includegraphics[width=0.9\linewidth]{"./figures/Figure6"}
+\caption{
+%todo  make it cleaner. and more similar to Figure 4.
+Illustration of the segmentation model architecture.
+This architecture follows standard practice in 
+UNet-like segmentation architectures.
+}
 \end{figure}
 
-\subsection{Loss function}
+\subsection{Loss Function}
 
-Given a model $M_{\theta}$, and a training dataset of labeled samples $\mathcal{D_{tr}}={(x_i, y_i)}$,
-learning is done by minimizing the following expectation over the model's parameters $\theta$:
+Given a segmentation model $M_{\theta}$, 
+with weight parameters $\theta$, 
+and an input image $x$,
+we denote the average of the model output by $m_{\theta}(x)$:
 
-$$\theta^* = argmin_{\theta} \mathbb{E}_{x,y \in \mathcal{D_tr}} ||m_{\theta}(x) - f(y) ||^2 $$
+\begin{subequations}
+\begin{align}
+M_{\theta}&: \mathbb{R}^{H \times W} \rightarrow [0,1]^{H \times W} \\
+\tilde{s}&= M_{\theta}(x) \\
+m_{\theta}&:  \mathbb{R}^{H \times W} \rightarrow [0,1]\\
+m_{\theta}(x)&=  \frac{1}{HW} \sum_{h,w} \tilde{s}_{hw}
+\end{align}
+\end{subequations}
 
-AS we shall see in the next subsection, we use a hypothesis function $g$ 
-as an approximation of the true target function $f$, to which we do not have access, 
-so that the actual training loss used to learn the model parameters $\theta$ is:
+We can then train the model by regressing the average value of the segmentation mask to the
+target label given by $f(t)$. 
+Given a training dataset of labeled samples $\mathcal{D_{tr}}={(x_i, t_i)}$,
+learning is thus done by minimizing the following loss function over the model's parameters $\theta$:
 
-$$\theta^* = argmin_{\theta} \mathbb{E}_{x,y \in \mathcal{D_tr}} ||m_{\theta}(x) - g(y) ||^2 $$
+\begin{equation}
+\theta^* = argmin_{\theta} \mathbb{E}_{x,t \in \mathcal{D}_{tr}} ||m_{\theta}(x) - f(t) ||^2 
+\end{equation}
 
-\subsection{Hypothesis function}
+However, as we shall see in the next section, 
+the target function $f$ represents an unknown ideal function,
+so we do not have access to the actual values of $f(t)$.
+Instead, we will approximate $f$ with a known hypothesis function $g \approx f$,
+so that the actual training loss used in our experiments is:
+
+\begin{equation}
+\theta^* = argmin_{\theta} \mathbb{E}_{x,t \in \mathcal{D}_{tr}} ||m_{\theta}(x) - g(t) ||^2 
+\end{equation}
+
+\subsection{Target Function}
 
 % Intro
 In section 3.3, we have made the assumption 
-that labels $y$ provide us with the expected value 
-of the true binary segmentation masks through a target function $f$.
+that labels $t$ uniquely define the expected value 
+of the ground-truth binary segmentation masks $s$ through a target function $f$.
 In this section, we discuss the role of this target function.
 
 % What does this target mean?
-The target function $f$ defines the evolution of the copper surface adhesive potency with $y$ as the surface ratio of high adhesive potency $\mathbb{E}_{h,w}s_{hw}$.
-$f$ is an ideal function of which we have supposed the existence, 
-but to which we can not have access,
-as we do not know the influence of the manufacturing process on the copper's surface.
+The target function $f(t)$ describes the evolution of the copper surface adhesive potency with time $t$.
+More precisely $f$ defines the evolution of the \textit{ratio of adhesive surface area} with time.
 
-We thus introduce a hypothesis function $g$ approximating $f$,
-which we aim to estimate from the labeled data.
-Although we do not have access to $f$, we know several of its characteristics,
-which we can use to reduce the search space of hypothesis functions $g$.
+% f is an ideal function that we estimate
+However, $f$ is an ideal, unknown function, of which we have only supposed the existence.
+We do not know the value taken by $f(t)$ for a given $t$ because we 
+do not know the exact impact of the manufacturing process on the copper's surface characteristics.
+We thus introduce a known hypothesis function $g$ to approximate the ideal target function $f$.
+$g$ expresses our belief of what the values taken by the true function $f(t)$ are.
+Although we do not know the exact values taken by $f$, we know several of its characteristics,
+which we can use to reduce the search space of hypothesis functions $g$:
 
-In Section 2, we established that for all $i$, copper surfaces with label $i+1$ have lower 
-adhesive $i-1$ have lower adhesive potency than copper sheets of label $i$.
-Hence, we know that $f$ is a monotonically decreasing function.
-We can thus restrict our search of hypothesis function $g$ to monotonically decreasing function.
-Second, as $f$ describes the ideal, true evolution of the copper surface statistics with $y$,
+% f is monotonically decreasing
+In Section 2, we have established that, for all $t$, 
+copper surfaces with label $t' > t$ should have lower adhesive potency than copper surfaces of label $t$.
+Hence, $f$ should be a monotonically decreasing function of time,
+and we can thus restrict our search of hypothesis function $g$ to monotonically decreasing function.
+For example, the simplest of such function would be the linear function, taking linearly decreasing values from 1 to 0,
+which we analyse in the experiment section.
+
+% The generalization error reflects the accuracy of g's apporximation
+%todo Sharper explanation
+Second, as $f$ describes the ideal, true evolution of the copper surface statistics with $t$,
 so that training an ideal model with the supervision signal provided by $f$ should yield to zero test errors.
 Hence training a segmentation model with a hypothesis $g \approx f$ should lead to low test errors.
 This means that we can use the error of the model on the held out validation dataset as a proxy measure on
 the validity of the hypothesis function $g$.
 
+% We can learn f
 In the experiment section, we evaluate the model errors with different hand-crafter hypothesis functions $g$.
 In future work, we aim to learn the hypothesis function $g$ together with the model parameters.
 
+%\subsection{Learning the Hypothesis Function}
+% todo ?
 
 \section{Related Work}
 
@@ -395,14 +458,19 @@ experts with strong supports for interpretable decision,
 which falls at the intersection of these three research lines.
 We briefly present some of these works in the following subsections
 
-\subsection{Explaining CNN representations}
-Although deep neural networks have achieved a great success on a variety 
-of challenging visualization tasks in recent years, 
-our understanding of how these neural network models is far from enough to interpret.
-The pursuit of figuring out what is learned for each layer of models 
-and how trained neural network models really "think" never stops.
-
-%% Efforts to understand hidden representations
+\subsection{Explaining CNN Representations}
+% intro
+The actual processing performed by deep models is hard to interpret:
+because of the distributed nature of the model's internal representation,
+it is difficult to assign a useful meaning to each individual unit meaning.
+This is problematic as model failure cases are very hard to investigate and justify.
+Hence, an interesting line of work is researching for tools to interpret neural network processes.
+We can see two approaches in this line of work:
+one is focused on visualization and the ther one focused on generating natural language explanations.
+ 
+% 
+More related
+ %% Efforts to understand hidden representations
 % Visualization works.
 % Jason Yosinski et al.,2015,understanding neural network through deep visualization
 Jason Yosinski et al. provide two useful tools for visualizing and interpreting neural nets. 
@@ -424,7 +492,7 @@ TensorFlow provides an attention-based model, which enables us to see what parts
 %% Deep learning for scientific discovery
 
 \subsection{Weakly Supervised Segmentation}
-
+%todo
 %% Segmentation from lazy labels.
 An other point we should pay attention to is different labeling strategies in conventional supervised learning.
 Typically speaking, it's often assumed that each instance is associated with one single label. However, there should usually be more than one labels for one instance in real-world tasks, if it is multi-label learning.
@@ -448,7 +516,7 @@ Yuxing Tang et al. build a similarity-based knowledge transfer mode trying to in
 The most related work with ours is Rihuan Ke's[*] in which they present a semi-supervised learning strategy for segmentation with lazy labels and develop a multi-task learning framework to integrate the instance detection, separation and segmentation within a deep neural network.
 
 \subsection{Machine Learning for Material Science}
-
+%todo
 Deep learning has showed remarkable success on many important 
 learning problems in chemistry, drug discovery, biology and materials science.
 
@@ -518,7 +586,7 @@ surfaces of high adhesive potency (i.e.; for $y=1$ and $y=2$).
 % Visualize
 To motivate our results, Figure 9 illustrates an output of the segmentation model on a small patch of an input image $x$.
 To a novice observer, the model seems to assign lower adhesive potential to smoother regions of the input.
-In future work, we plan on further exploring these visualizations to better understand the 
+In future work, we plan on further exploring these visualizations with human experts to better understand the 
 patterns characterizing the surface adhesive potency.
 
 \begin{figure}[h]
@@ -530,7 +598,7 @@ patterns characterizing the surface adhesive potency.
 \end{figure}
 
 \subsection{Investigation of the hypothesis function}
-
+%todo
 In this section, we question the role of the hypothesis function on the accuracy of the model.
 As illustrated in Figure 10, we investigate the simplest possible hypothesis, $f(y)=y$.
 This hypothesis function formulates the idea that for $y=0$, 
@@ -563,7 +631,7 @@ Investigating the impact of different hypothesis function is an
 interesting question we will consider in future work.
 
 \section{Discussion \& Conclusion}
-
+%todo
 % Summary of the paper
 
 In this paper, we have argued that deep neural networks can be used to 
@@ -602,7 +670,6 @@ In particular, we assumed that each individual area could be represented by a si
 while, in reality, the adhesive potency of local areas are most likely not binary in nature.
 
 Nevertheless, these preliminary results are encouraging, and we will continue our analysis in future work.
-
 
 {\small
 	\bibliographystyle{ieee}
