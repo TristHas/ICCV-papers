@@ -412,7 +412,7 @@ In this section, we discuss the role of this target function.
 
 % What does this target mean?
 The target function $f(t)$ describes the evolution of the copper surface adhesive potency with time $t$.
-More precisely $f$ defines the evolution of the \textit{ratio of adhesive surface area} with time.
+More precisely $f$ defines the evolution of the \textit{ratio of adhesive surface area} with time (see Figure 5).
 
 % f is an ideal function that we estimate
 However, $f$ is an ideal, unknown function, of which we have only supposed the existence.
@@ -468,28 +468,40 @@ Hence, an interesting line of work is researching for tools to interpret neural 
 We can see two approaches in this line of work:
 one is focused on visualization and the ther one focused on generating natural language explanations.
  
-% 
-More related
- %% Efforts to understand hidden representations
-% Visualization works.
+% NLP
+%todo
+
+%There is a new dataset called Visual Question Answering(VQA) containing open-ended questions about images.These questions require an understanding of vision, language and commonsense knowledge to answer.
+ % Trevor darrel train models to explain their decision 
+ %Attentive Explanations: Justifying Decisions and Pointing to the Evidence, Dong Huk Park, 2017
+%Trevor Darrel et al. build  models (such as Pointing and Justification-based explanation model) to explain their decisions, generating convincing explanations.
+%TensorFlow provides an attention-based model, which enables us to see what parts of the image the model focuses on as it generates a caption.
+ %% Deep learning for scientific discovery
+ 
+% Visualization
+%todo
+More related to our work is the line of work focused on visualizing neural network hidden activations
+% Jason yo
 % Jason Yosinski et al.,2015,understanding neural network through deep visualization
-Jason Yosinski et al. provide two useful tools for visualizing and interpreting neural nets. 
+Yosinski \textit{et al.} \cite{} provide two useful tools for visualizing and interpreting neural nets. 
 One is to visualize  the activations produced on each layer of a trained convnet as it 
 processes an image or video, and the other enables visualizing 
 features at each layer of a DNN via regularized optimization in image space.
 % activation atlas https://distill.pub/2019/activation-atlas/
-%%(Shan Carter et al.2019)
-Shan Carter et al. create an explorable activation atlas of features the network has learned, by using feature inversion to visualize millions of activations from an image classification network, which can reveal how the network typically represents some concepts.
+
+More recently, Carter \textit{et al.} \cite{} propose an explorable activation atlas of vision model's learned feature by using feature inversion to visualize millions of activations from an image classification network
+Their technique provides insights regarding the network's conceptual representations.
 % attention models for image captioning and visual question answering
 %Yashi Goyal et al., CVPR 2017, Marking the V in VQA Matter:Elevating the Role of Image Understanding in Visual Question Answering
-%Peng Zhang et al., CVPR 2016, Yin and Yang:Balancing and Answering Binary Visual Questions
-%Aishwarya Agrawal et al., ICCV 2015, VQA:Visual Question Answering
-There is a new dataset called Visual Question Answering(VQA) containing open-ended questions about images.These questions require an understanding of vision, language and commonsense knowledge to answer.
-% Trevor darrel train models to explain their decision 
-%Attentive Explanations: Justifying Decisions and Pointing to the Evidence, Dong Huk Park, 2017
-Trevor Darrel et al. build  models (such as Pointing and Justification-based explanation model) to explain their decisions, generating convincing explanations.
-TensorFlow provides an attention-based model, which enables us to see what parts of the image the model focuses on as it generates a caption.
-%% Deep learning for scientific discovery
+
+% Original work on visual attention
+Visual attention \cite{} also helps in explaining the process through which model's 
+outputs are computed by providing visual clues as to what regions of the input space 
+contribute the most to the final decision. 
+% show attend and tell
+% other visual models in question answering and image captioning
+These have been used to investigate model's operations on image captioning \cite{} and VQA \cite{} tasks,
+and is similar to the idea behind our segmentation model.
 
 \subsection{Weakly Supervised Segmentation}
 %todo
@@ -533,6 +545,15 @@ In the field of materials science, deep neural networks have also been receiving
 %Deep learning approaches such as DeepMind's AlphaFold are helpful for scientists to deal with the "protein folding problem", not only predicting the intricate 3D structure of a protein but also predicting the physical properties of a protein structure, and are making significant progress on one of the core challenges in biology.
 % THIS ONE New Materials for batteries
 %% 
+
+Beyond the material sciences, we note a growing interest in applying deep learning techniques
+for scientific discovery. 
+This perhaps best examplified by the impressive successes of AlphaFold \cite{} in protein folding estimation,
+or the Celeste \cite{} project which catalogued celestial objects of visible universe.
+
+Our work, while much more modest in its scale, 
+shares the characteristic of using vision models to unravel
+the unerdlying principle of material reactions to chemical treatments.
 
 \section{Experiments}
 
