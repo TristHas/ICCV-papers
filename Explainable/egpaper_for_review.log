@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.30)  25 JUL 2019 19:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.30)  29 JUL 2019 12:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -385,22 +385,18 @@ Underfull \vbox (badness 1320) has occurred while \output is active []
 
 
 ]
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ù in font ptmr7t!
-
 <"./figures/Figure1".jpg, id=14, 730.98094pt x 386.94562pt>
 File: "./figures/Figure1".jpg Graphic file (type jpg)
 
 <use "./figures/Figure1".jpg>
-Package pdftex.def Info: "./figures/Figure1".jpg used on input line 165.
+Package pdftex.def Info: "./figures/Figure1".jpg used on input line 175.
 (pdftex.def)             Requested size: 213.4209pt x 112.973pt.
 
 <"./figures/Figure2".png, id=15, 868.24374pt x 190.7125pt>
 File: "./figures/Figure2".png Graphic file (type png)
 
 <use "./figures/Figure2".png>
-Package pdftex.def Info: "./figures/Figure2".png used on input line 177.
+Package pdftex.def Info: "./figures/Figure2".png used on input line 189.
 (pdftex.def)             Requested size: 213.4209pt x 46.87773pt.
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
@@ -410,10 +406,10 @@ id=27, 618.31pt x 491.8375pt>
 File: "./figures/Figure3".png Graphic file (type png)
 
 <use "./figures/Figure3".png>
-Package pdftex.def Info: "./figures/Figure3".png used on input line 217.
+Package pdftex.def Info: "./figures/Figure3".png used on input line 229.
 (pdftex.def)             Requested size: 213.4209pt x 169.76666pt.
 
-Underfull \hbox (badness 2556) in paragraph at lines 237--239
+Underfull \hbox (badness 2556) in paragraph at lines 249--251
 []\OT1/ptm/m/n/10 We de-note the dataset de-scribed above as $\OMS/cmsy/m/n/10 
 D \OT1/cmr/m/n/10 =
  []
@@ -426,104 +422,114 @@ Underfull \vbox (badness 1281) has occurred while \output is active []
 File: "./figures/Figure4".png Graphic file (type png)
 
 <use "./figures/Figure4".png>
-Package pdftex.def Info: "./figures/Figure4".png used on input line 261.
+Package pdftex.def Info: "./figures/Figure4".png used on input line 273.
 (pdftex.def)             Requested size: 213.4209pt x 53.9005pt.
  [3 <./figures/Figure3.png> <./figures/Figure4.png>]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 296.
- <"./figures/Figure5".png, id=49, 622.12425pt x 473.97075pt>
-File: "./figures/Figure5".png Graphic file (type png)
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 308.
+ <"./figures/Figure5".jpg, id=49, 581.17125pt x 444.4605pt>
+File: "./figures/Figure5".jpg Graphic file (type jpg)
 
-<use "./figures/Figure5".png>
-Package pdftex.def Info: "./figures/Figure5".png used on input line 319.
-(pdftex.def)             Requested size: 213.4209pt x 162.59436pt.
+<use "./figures/Figure5".jpg>
+Package pdftex.def Info: "./figures/Figure5".jpg used on input line 331.
+(pdftex.def)             Requested size: 213.4209pt x 163.22028pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Citation `xxx' on page 4 undefined on input line 348.
+LaTeX Warning: Citation `xxx' on page 4 undefined on input line 365.
 
-
-LaTeX Warning: Citation `xxx' on page 4 undefined on input line 353.
-
-<"./figures/Figure6".png, id=50, 451.08525pt x 367.97475pt>
+<"./figures/Figure6".png, id=51, 620.91975pt x 306.54526pt>
 File: "./figures/Figure6".png Graphic file (type png)
 
 <use "./figures/Figure6".png>
-Package pdftex.def Info: "./figures/Figure6".png used on input line 361.
-(pdftex.def)             Requested size: 213.4209pt x 174.0992pt.
+Package pdftex.def Info: "./figures/Figure6".png used on input line 373.
+(pdftex.def)             Requested size: 213.4209pt x 105.36531pt.
+ [4 <./figures/Figure5.jpg> <./figures/Figure6.png>] [5]
+
+LaTeX Warning: Citation `xxx' on page 6 undefined on input line 502.
+
+
+LaTeX Warning: Citation `xxx' on page 6 undefined on input line 508.
+
+
+LaTeX Warning: Citation `xxx' on page 6 undefined on input line 513.
+
+
+LaTeX Warning: Citation `xxx' on page 6 undefined on input line 513.
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 545--546
+\OT1/ptm/m/n/10 have also been re-ceiv-ing in-reas-ing at-ten-tion and have
+ []
+
+<"./figures/Figure7".png, id=87, 687.56876pt x 324.21124pt>
+File: "./figures/Figure7".png Graphic file (type png)
+
+<use "./figures/Figure7".png>
+Package pdftex.def Info: "./figures/Figure7".png used on input line 586.
+(pdftex.def)             Requested size: 213.4209pt x 100.63306pt.
+
+<"./figures/Figure8".png, id=88, 833.1125pt x 370.38374pt>
+File: "./figures/Figure8".png Graphic file (type png)
+
+<use "./figures/Figure8".png>
+Package pdftex.def Info: "./figures/Figure8".png used on input line 602.
+(pdftex.def)             Requested size: 213.4209pt x 94.87894pt.
+ [6 <./figures/Figure7.png> <./figures/Figure8.png>] <"./figures/Figure9".png, 
+id=102, 478.78876pt x 320.19624pt>
+File: "./figures/Figure9".png Graphic file (type png)
+
+<use "./figures/Figure9".png>
+Package pdftex.def Info: "./figures/Figure9".png used on input line 627.
+(pdftex.def)             Requested size: 213.4209pt x 142.72871pt.
+
+<"./figures/Figure10".png, id=103, 705.63625pt x 337.26pt>
+File: "./figures/Figure10".png Graphic file (type png)
+
+<use "./figures/Figure10".png>
+Package pdftex.def Info: "./figures/Figure10".png used on input line 647.
+(pdftex.def)             Requested size: 213.4209pt x 102.00217pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4 <./figures/Figure5.png>] [5 <./figures/Figure6.png>]
-Underfull \hbox (badness 1270) in paragraph at lines 535--548
-\OT1/ptm/m/n/10 have also been re-ceiv-ing in-reas-ing at-ten-tion and have
- []
-
-
-Underfull \vbox (badness 4940) has occurred while \output is active []
-
-
-<"./figures/Figure7".png, id=83, 687.56876pt x 324.21124pt>
-File: "./figures/Figure7".png Graphic file (type png)
-
-<use "./figures/Figure7".png>
-Package pdftex.def Info: "./figures/Figure7".png used on input line 574.
-(pdftex.def)             Requested size: 213.4209pt x 100.63306pt.
-
-<"./figures/Figure8".png, id=84, 833.1125pt x 370.38374pt>
-File: "./figures/Figure8".png Graphic file (type png)
-
-<use "./figures/Figure8".png>
-Package pdftex.def Info: "./figures/Figure8".png used on input line 590.
-(pdftex.def)             Requested size: 213.4209pt x 94.87894pt.
- [6 <./figures/Figure7.png> <./figures/Figure8.png>] <"./figures/Figure9".png, 
-id=98, 478.78876pt x 320.19624pt>
-File: "./figures/Figure9".png Graphic file (type png)
-
-<use "./figures/Figure9".png>
-Package pdftex.def Info: "./figures/Figure9".png used on input line 615.
-(pdftex.def)             Requested size: 213.4209pt x 142.72871pt.
-
-<"./figures/Figure10".png, id=99, 705.63625pt x 337.26pt>
-File: "./figures/Figure10".png Graphic file (type png)
-
-<use "./figures/Figure10".png>
-Package pdftex.def Info: "./figures/Figure10".png used on input line 635.
-(pdftex.def)             Requested size: 213.4209pt x 102.00217pt.
- [7 <./figures/Figure9.png> <./figures/Figure10.png>] (./egpaper_for_review.bbl
- (./egpaper_for_review.brf)
+[7 <./figures/Figure9.png> <./figures/Figure10.png>] (./egpaper_for_review.bbl
+(./egpaper_for_review.brf)
 \tf@brf=\write3
 \openout3 = `egpaper_for_review.brf'.
 
+
+Underfull \hbox (badness 1163) in paragraph at lines 19--19
+\OT1/ptm/m/it/9 Con-fer-ence on Med-i-cal im-age com-put-ing and computer-
+ []
+
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 700.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 712.
  [8
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 700.
-
-(./egpaper_for_review.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 700.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 700.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 712.
+ (./egpaper_for_review.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 712.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 712.
 Package rerunfilecheck Info: File `egpaper_for_review.brf' has not changed.
-(rerunfilecheck)             Checksum: 587FAD6147238D7F0F7315C03865D6CF;471.
+(rerunfilecheck)             Checksum: 300EFD32B5BF04AE9B8FD1EB865D20F7;591.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 700.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 712.
  ) 
 Here is how much of TeX's memory you used:
- 6573 strings out of 492995
- 95658 string characters out of 6132704
- 187653 words of memory out of 5000000
- 9962 multiletter control sequences out of 15000+600000
+ 6583 strings out of 492995
+ 95861 string characters out of 6132704
+ 188730 words of memory out of 5000000
+ 9970 multiletter control sequences out of 15000+600000
  28073 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,9n,26p,751b,328s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,9n,26p,655b,365s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
@@ -541,10 +547,10 @@ t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texmf
 nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/
 urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on egpaper_for_review.pdf (8 pages, 3087932 bytes).
+Output written on egpaper_for_review.pdf (8 pages, 3098863 bytes).
 PDF statistics:
- 185 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 144 compressed objects within 2 object streams
+ 52 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

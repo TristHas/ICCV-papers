@@ -5,6 +5,18 @@ R.~Ke, A.~Bugeau, N.~Papadakis, P.~Schuetz, and C.-B. Sch{\"o}nlieb.
 \newblock A multi-task u-net for segmentation with lazy labels.
 \newblock {\em arXiv preprint arXiv:1906.12177}, 2019.
 
+\bibitem{park2016attentive}
+D.~H. Park, L.~A. Hendricks, Z.~Akata, B.~Schiele, T.~Darrell, and M.~Rohrbach.
+\newblock Attentive explanations: Justifying decisions and pointing to the
+  evidence.
+\newblock {\em arXiv preprint arXiv:1612.04757}, 2016.
+
+\bibitem{ronneberger2015u}
+O.~Ronneberger, P.~Fischer, and T.~Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In {\em International Conference on Medical image computing and
+  computer-assisted intervention}, pages 234--241. Springer, 2015.
+
 \bibitem{yosinski2015understanding}
 J.~Yosinski, J.~Clune, A.~Nguyen, T.~Fuchs, and H.~Lipson.
 \newblock Understanding neural networks through deep visualization.

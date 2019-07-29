@@ -90,7 +90,7 @@ humans also often fail to explain the process behind their low-level feature rec
 For example, precisely defining the nature of a specific texture 
 (what are the defining features of a plastic or wooden surface?) 
 or specific low-level part attributes exhibiting large intra-class variations 
-(what is the defining features of a "leg" or a "wing"?) is a very difficult task.
+(what is the defining features of a ``leg'' or a ``wing''?) is a very difficult task.
 Humans constantly perform such low-level visual recognition tasks 
 while being unable to precisely justify for their own recognition process.
 	
@@ -133,10 +133,11 @@ and eventually help optimize the manufacturing process.
 %Going one step further we show how, given sufficient experimental data, the model
 %can be augmented to automatically learn and formulate these hypothesis on itself.
 % Conceptual contribution
-In essence, the argument this paper is aiming for is as follows: although deep learning models 
-lack the "common sense reasoning” abilities and the powerful formalism of natural language to communicate 
-and justify for their decision making process, they can provide powerful to explain low-level recognition processes.
-	
+In essence, the argument this paper is aiming for is as follows: 
+although deep learning models lack the ``common sense reasoning'' abilities of humans,
+and the powerful formalism of natural language to communicate and justify for their decision process, 
+they can provide useful tools to visualize and explain low-level recognition processes.
+
 % Practical contribution
 In practice, the contribution of this paper is as follows:
 \begin{enumerate}
@@ -157,7 +158,16 @@ Finally, Section 6 further discusses the relevance of our results, insisting on 
 %------------------------------------------------------------------------
 \section{Background}
 
-Printed circuit boards (PCBs) are integral part of a wide variety of electronic devices including industrial and household appliances (e.g. TV and PC), mobile communication devices and automobiles. PCBs play an important role in electrical connection between electronic components. Copper has been used in the PCBs industry as the conducting material, and the electric copper circuits are isolated from each other by insulators (solder resist, prepreg etc). A multilayered PCBs have a laminate having a plurality of electroconductive layers with insulating layers interposed therebetween. So there are many interfaces related to the copper and resins in PCBs. Figure 1 illustrates the organization of such an electric circuit.
+Printed circuit boards (PCBs) are an integral part of a wide variety of electronic devices, 
+including industrial and household appliances (e.g. TV and PC), 
+mobile communication devices and automobiles. 
+PCBs play an important role in electrical connection between electronic components. 
+Copper has been used in the PCBs industry as the conducting material, 
+and the electric copper circuits are isolated from each other by insulators (solder resist, prepreg etc). 
+A multilayered PCBs have a laminate having a plurality of electroconductive 
+layers with insulating layers interposed therebetween. 
+So there are many interfaces related to the copper and resins in PCBs. 
+Figure 1 illustrates the organization of such an electric circuit.
 
 
 \begin{figure}[h]
@@ -170,7 +180,9 @@ Copper circuits are made with various insulators for several purposes.
 \end{figure}
 
 
-Since PCBs have been required to have higher heat-resistant properties in recent years, copper surface treatment technologies have performed a more and more important role in the manufacturing process. This is because they can enable PCBs  to maintain high copper to resin adhesion even under harsh conditions. Copper surface treatment (copper surface roughening) offers one of the most effective ways to increase adhesion of the interfaces. Copper surface roughening has been widely used for the purpose of increasing adhesion of copper to resins. It produces a unique surface topography which enhances the mechanical bonding of copper to resins, as illustrated in Figure 2.
+Since PCBs have been required to have higher heat-resistant properties in recent years, 
+copper surface treatment technologies have performed a more and more important role in the manufacturing process. 
+This is because they can enable PCBs to maintain high copper to resin adhesion even under harsh conditions. Copper surface treatment (copper surface roughening) offers one of the most effective ways to increase adhesion of the interfaces. Copper surface roughening has been widely used for the purpose of increasing adhesion of copper to resins. It produces a unique surface topography which enhances the mechanical bonding of copper to resins, as illustrated in Figure 2.
 
 \begin{figure}[h]
 \centering
@@ -187,8 +199,8 @@ Larger contact surface areas provide higher adhesive potency.
 In very broad terms, rough surface allow for stronger bonds 
 as the asperities of the surface provide a wide range of adhesive surface area and an anchoring effect. 
 In contrast, smooth surfaces don’t provide such effects so that they have lower adhesive potential. 
-In the remaining of this paper, we will refer to the potential bonding strength of a copper surface as its "adhesive potency".
-It is also important to note that the adhesive potency of a copper surface is related to its "roughness", 
+In the remaining of this paper, we will refer to the potential bonding strength of a copper surface as its ``adhesive potency''.
+It is also important to note that the adhesive potency of a copper surface is related to its ``roughness'', 
 which is observable at the microscopic scale.
 
 Electronic substrate manufacturers have developed advanced manufacturing processes to shape the surface of copper sheets in order to increase their adhesive potency. 
@@ -360,7 +372,6 @@ Finally, we add a sigmoid layer at the top of the network in order to bound the 
 \centering
 \includegraphics[width=0.9\linewidth]{"./figures/Figure6"}
 \caption{
-%todo  make it cleaner. and more similar to Figure 4.
 Illustration of the segmentation model architecture.
 This architecture follows standard practice in 
 UNet-like segmentation architectures.
@@ -428,23 +439,28 @@ In Section 2, we have established that, for all $t$,
 copper surfaces with label $t' > t$ should have lower adhesive potency than copper surfaces of label $t$.
 Hence, $f$ should be a monotonically decreasing function of time,
 and we can thus restrict our search of hypothesis function $g$ to monotonically decreasing function.
-For example, the simplest of such function would be the linear function, taking linearly decreasing values from 1 to 0,
-which we analyse in the experiment section.
+For example, the simplest of such function would be the linear function, 
+taking linearly decreasing values from 1 to 0,
+which we start by analyzing in the experiment section.
 
 % The generalization error reflects the accuracy of g's apporximation
 %todo Sharper explanation
-Second, as $f$ describes the ideal, true evolution of the copper surface statistics with $t$,
-so that training an ideal model with the supervision signal provided by $f$ should yield to zero test errors.
+Second, as $f$ is assumed to describe the true evolution of the copper surface statistics with $t$,
+a universal function approximator should be able to perfectly learn its values, given enough training data.
+Hence training an ideal 
+
+training an ideal model with the supervision signal provided by $f$ should yield low test errors.
 Hence training a segmentation model with a hypothesis $g \approx f$ should lead to low test errors.
 This means that we can use the error of the model on the held out validation dataset as a proxy measure on
 the validity of the hypothesis function $g$.
 
 % We can learn f
-In the experiment section, we evaluate the model errors with different hand-crafter hypothesis functions $g$.
-In future work, we aim to learn the hypothesis function $g$ together with the model parameters.
+In the experiment section, we evaluate the model errors with different hand-crafter hypothesis functions $g$,
+and show that the model yields large errors when trained on a poorly choses hypothesis function $g$.
+This motivates our idea that the model test error may be used as a proxy metric of the quality of the hypothesis function $g$.
+In future work, we aim to jointly learn the hypothesis function $g$ with the model parameters $\theta$ to automatically
+formulate hypothesis
 
-%\subsection{Learning the Hypothesis Function}
-% todo ?
 
 \section{Related Work}
 
@@ -458,7 +474,7 @@ experts with strong supports for interpretable decision,
 which falls at the intersection of these three research lines.
 We briefly present some of these works in the following subsections
 
-\subsection{Explaining CNN Representations}
+\subsection{CNN Interpretability}
 % intro
 The actual processing performed by deep models is hard to interpret:
 because of the distributed nature of the model's internal representation,
@@ -470,13 +486,9 @@ one is focused on visualization and the ther one focused on generating natural l
  
 % NLP
 %todo
-
-%There is a new dataset called Visual Question Answering(VQA) containing open-ended questions about images.These questions require an understanding of vision, language and commonsense knowledge to answer.
- % Trevor darrel train models to explain their decision 
- %Attentive Explanations: Justifying Decisions and Pointing to the Evidence, Dong Huk Park, 2017
-%Trevor Darrel et al. build  models (such as Pointing and Justification-based explanation model) to explain their decisions, generating convincing explanations.
-%TensorFlow provides an attention-based model, which enables us to see what parts of the image the model focuses on as it generates a caption.
- %% Deep learning for scientific discovery
+On the side of natural language explainability, Park \textit{et al.} \cite{park2016attentive} jointly trained to answer and justify for their
+answers on a visual question answering task. 
+They combine visual attention maps and natural language generation to bring interpretability to the model's output.
  
 % Visualization
 More related to our work is the line of work focused on visualizing neural network hidden activations
@@ -532,6 +544,8 @@ Deep learning has showed remarkable success on many important
 learning problems in chemistry, drug discovery, biology and materials science.
 
 In the field of materials science, deep neural networks have also been receiving inreasing attention and have achieved great improvements, for example, in material property prediction and new materials discovery for batteries.
+
+CNNs have also been used for defect detection on microscopic images of various material surfafces \cite{}.
 % Material sciences
 % Discover new materials or properties (messaging passing deep networks by gilmer)
 %%Justin Gilmer,2017, Neural Message Passing for Quantum Chemistry
