@@ -376,7 +376,7 @@ of the descending path, similar to the UNet architecture \cite{ronneberger2015u}
 Residual modules of the ascending path are the exact symmetric of their analog in descending path.
 The ascending path uses bilinear upsampling layers 
 instead of the max pooling layers of the descending path.
-Different from the UNet architecture, and following previous works \cite{xxx},
+Different from the UNet architecture, and following previous works \cite{lee2017superhuman,smith2016deep},
 we merge the outputs of the descending path modules with the inputs of the ascending path 
 by summation, instead of concatenation. 
 We also use valid convolutions to preserve the spatial resolution of the output.
@@ -521,18 +521,18 @@ Their technique provides insights regarding the network's conceptual representat
 %Yashi Goyal et al., CVPR 2017, Marking the V in VQA Matter:Elevating the Role of Image Understanding in Visual Question Answering
 
 % Original work on visual attention
-Visual attention \cite{allport1989visual} also helps in explaining the process through which model's 
+Visual attention \cite{xu2015show} also helps in explaining the process through which model's 
 outputs are computed by providing visual clues as to what regions of the input space 
 contribute the most to the final decision. 
 % show attend and tell
 % other visual models in question answering and image captioning
-These have been used to investigate model's operations on image captioning \cite{you2016image} and VQA \cite{agrawal:2015}\cite{zhang2016yin}\cite{goyal2017making} tasks,
+These have been used to investigate model's operations on image captioning \cite{xu2015show,you2016image} and VQA \cite{antol2015vqa,zhang2016yin,goyal2017making} tasks,
 and is similar to the idea behind our segmentation model.
 
 \subsection{Weakly Supervised Segmentation}
 %todo
 An other line of our research is based on the idea of pixel-wised segmentation with weak supervision.
-Most deep learning methods for computer vision tasks such as object recognition\cite{simonyan2014very}\cite{russakovsky2015imagenet} and object detection (\textit{e.g.} DetectorNet\cite{szegedy2013deep}, OverFeat\cite{sermanet2013overfeat}, R-CNN\cite{girshick2014rich}, SPP-net\cite{he2015spatial}, Fast R-CNN\cite{girshick2015fast}, and Faster R-CNN\cite{ren2015faster}) rely on strongly annotated data and these successful techniques require ground-truth labels to be given for a big training data set, 
+Most deep learning methods for computer vision tasks such as object recognition\cite{simonyan2014very,russakovsky2015imagenet} and object detection (\textit{e.g.} DetectorNet \cite{szegedy2013deep}, OverFeat \cite{sermanet2013overfeat}, R-CNN\cite{girshick2014rich}, SPP-net\cite{he2015spatial}, Fast R-CNN\cite{girshick2015fast}, and Faster R-CNN\cite{ren2015faster}) rely on strongly annotated data and these successful techniques require ground-truth labels to be given for a big training data set, 
 however it is an expensive and time-consuming effort to attain strong supervison information due to the high cost of data annotation.
 
 Weakly supervised methods\cite{bilen2016weakly}\cite{peyre2017weakly}\cite{arandjelovic2016netvlad} have shown great promise while noisy, limited, or imprecise sources are used to provide supervision signal for labeling large amounts of training data in a supervised learning setting, that means the level of annotation can be less detailed. 
@@ -578,8 +578,8 @@ CNNs have also been used for detect analysis on microscopic images of various ma
 
 Beyond the material sciences, we note a growing interest in applying deep learning techniques
 for scientific discovery. 
-This perhaps best examplified by the impressive successes of AlphaFold \cite{evans2018novo} in protein folding estimation,
-or the Celeste \cite{regier2015celeste} project which catalogued celestial objects of visible universe.
+This perhaps best exemplified by the impressive successes of AlphaFold \cite{evans2018novo} in protein folding estimation,
+or the Celeste \cite{regier2015celeste} project which cataloged celestial objects of visible universe.
 
 Our work, while much more modest in its scale, 
 shares the characteristic of using vision models to unravel
@@ -692,6 +692,17 @@ following a square root or logarithmic trend.
 }
 \end{figure}
 
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=0.9\linewidth]{"./figures/Figure11"}
+\caption{
+Results of the segmentation model evaluation with different hypothesis function $g$.
+(Left) $g=1-t^{-\frac{1}{2}}$. The model seems to nicely fit the hypothesis function.
+(Middle) $g=1-t^{-2}$. The model diverges from the hypothesis function, suggesting a more rapid decay.
+(Right) $g=sign(-1^{t})$. The model struggles to learn the hypothesis function, yielding high errors.
+}
+\end{figure*}
+
 Figure 10 compares the hypothesis function to the actual model output on the training, 
 validation and test set.
 First, we observe no overfitting as all datasets yield similar average results.
@@ -704,16 +715,6 @@ This result suggests that the surface ratio
 (i.e. the smoothing effect of the stress test on the copper surface) 
 may decrease sub-linearly with time.
 
-\begin{figure*}[ht]
-\centering
-\includegraphics[width=0.9\linewidth]{"./figures/Figure11"}
-\caption{
-Results of the segmentation model evaluation with different hypothesis function $g$.
-(Left) $g=1-t^{-\frac{1}{2}}$. The model seems to nicely fit the hypothesis function.
-(Middle) $g=1-t^{-2}$. The model diverges from the hypothesis function, suggesting a more rapid decay.
-(Right) $g=sign(-1^{t})$. The model struggles to learn the hypothesis function, yielding high errors.
-}
-\end{figure*}
 
 Motivated by this first experiment, 
 we train the model on different hypothesis functions $g$,

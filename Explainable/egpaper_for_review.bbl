@@ -1,9 +1,133 @@
-\begin{thebibliography}{1}\itemsep=-1pt
+\begin{thebibliography}{10}\itemsep=-1pt
+
+\bibitem{antol2015vqa}
+S.~Antol, A.~Agrawal, J.~Lu, M.~Mitchell, D.~Batra, C.~Lawrence~Zitnick, and
+  D.~Parikh.
+\newblock Vqa: Visual question answering.
+\newblock In {\em Proceedings of the IEEE international conference on computer
+  vision}, pages 2425--2433, 2015.
+
+\bibitem{arandjelovic2016netvlad}
+R.~Arandjelovic, P.~Gronat, A.~Torii, T.~Pajdla, and J.~Sivic.
+\newblock Netvlad: Cnn architecture for weakly supervised place recognition.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 5297--5307, 2016.
+
+\bibitem{bilen2014weakly}
+H.~Bilen, M.~Pedersoli, and T.~Tuytelaars.
+\newblock Weakly supervised object detection with posterior regularization.
+\newblock In {\em British Machine Vision Conference}, volume~3, 2014.
+
+\bibitem{bilen2015weakly}
+H.~Bilen, M.~Pedersoli, and T.~Tuytelaars.
+\newblock Weakly supervised object detection with convex clustering.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 1081--1089, 2015.
+
+\bibitem{bilen2016weakly}
+H.~Bilen and A.~Vedaldi.
+\newblock Weakly supervised deep detection networks.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 2846--2854, 2016.
+
+\bibitem{carter2019activation}
+S.~Carter, Z.~Armstrong, L.~Schubert, I.~Johnson, and C.~Olah.
+\newblock Activation atlas.
+\newblock {\em Distill}, 4(3):e15, 2019.
+
+\bibitem{chen2018rise}
+H.~Chen, O.~Engkvist, Y.~Wang, M.~Olivecrona, and T.~Blaschke.
+\newblock The rise of deep learning in drug discovery.
+\newblock {\em Drug discovery today}, 23(6):1241--1250, 2018.
+
+\bibitem{evans2018novo}
+R.~Evans, J.~Jumper, J.~Kirkpatrick, L.~Sifre, T.~Green, C.~Qin, A.~Zidek,
+  A.~Nelson, A.~Bridgland, H.~Penedones, et~al.
+\newblock De novo structure prediction with deeplearning based scoring.
+\newblock {\em Annu Rev Biochem}, 77:363--382, 2018.
+
+\bibitem{gawehn2016deep}
+E.~Gawehn, J.~A. Hiss, and G.~Schneider.
+\newblock Deep learning in drug discovery.
+\newblock {\em Molecular informatics}, 35(1):3--14, 2016.
+
+\bibitem{girshick2015fast}
+R.~Girshick.
+\newblock Fast r-cnn.
+\newblock In {\em Proceedings of the IEEE international conference on computer
+  vision}, pages 1440--1448, 2015.
+
+\bibitem{girshick2014rich}
+R.~Girshick, J.~Donahue, T.~Darrell, and J.~Malik.
+\newblock Rich feature hierarchies for accurate object detection and semantic
+  segmentation.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 580--587, 2014.
+
+\bibitem{goh2017deep}
+G.~B. Goh, N.~O. Hodas, and A.~Vishnu.
+\newblock Deep learning for computational chemistry.
+\newblock {\em Journal of computational chemistry}, 38(16):1291--1307, 2017.
+
+\bibitem{goyal2017making}
+Y.~Goyal, T.~Khot, D.~Summers-Stay, D.~Batra, and D.~Parikh.
+\newblock Making the v in vqa matter: Elevating the role of image understanding
+  in visual question answering.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 6904--6913, 2017.
+
+\bibitem{hansen2015machine}
+K.~Hansen, F.~Biegler, R.~Ramakrishnan, W.~Pronobis, O.~A. Von~Lilienfeld,
+  K.-R. Müller, and A.~Tkatchenko.
+\newblock Machine learning predictions of molecular properties: Accurate
+  many-body potentials and nonlocality in chemical space.
+\newblock {\em The journal of physical chemistry letters}, 6(12):2326--2331,
+  2015.
+
+\bibitem{he2015spatial}
+K.~He, X.~Zhang, S.~Ren, and J.~Sun.
+\newblock Spatial pyramid pooling in deep convolutional networks for visual
+  recognition.
+\newblock {\em IEEE transactions on pattern analysis and machine intelligence},
+  37(9):1904--1916, 2015.
 
 \bibitem{ke2019multi}
 R.~Ke, A.~Bugeau, N.~Papadakis, P.~Schuetz, and C.-B. Sch{\"o}nlieb.
 \newblock A multi-task u-net for segmentation with lazy labels.
 \newblock {\em arXiv preprint arXiv:1906.12177}, 2019.
+
+\bibitem{lee2017superhuman}
+K.~Lee, J.~Zung, P.~Li, V.~Jain, and H.~S. Seung.
+\newblock Superhuman accuracy on the snemi3d connectomics challenge.
+\newblock {\em arXiv preprint arXiv:1706.00120}, 2017.
+
+\bibitem{li2018automated}
+W.~Li, K.~G. Field, and D.~Morgan.
+\newblock Automated defect analysis in electron microscopic images.
+\newblock {\em npj Computational Materials}, 4(1):36, 2018.
+
+\bibitem{li2018knowing}
+W.~Li, Z.~Yuan, X.~Fang, and C.~Wang.
+\newblock Knowing where to look? analysis on attention of visual question
+  answering system.
+\newblock In {\em Proceedings of the European Conference on Computer Vision
+  (ECCV)}, pages 0--0, 2018.
+
+\bibitem{liu2017materials}
+Y.~Liu, T.~Zhao, W.~Ju, and S.~Shi.
+\newblock Materials discovery and design using machine learning.
+\newblock {\em Journal of Materiomics}, 3(3):159--177, 2017.
+
+\bibitem{lubbers2017inferring}
+N.~Lubbers, T.~Lookman, and K.~Barros.
+\newblock Inferring low-dimensional microstructure representations using
+  convolutional neural networks.
+\newblock {\em Physical Review E}, 96(5):052111, 2017.
+
+\bibitem{nash2018review}
+W.~Nash, T.~Drummond, and N.~Birbilis.
+\newblock A review of deep learning in the study of materials degradation.
+\newblock {\em npj Materials Degradation}, 2(1):37, 2018.
 
 \bibitem{park2016attentive}
 D.~H. Park, L.~A. Hendricks, Z.~Akata, B.~Schiele, T.~Darrell, and M.~Rohrbach.
@@ -11,15 +135,120 @@ D.~H. Park, L.~A. Hendricks, Z.~Akata, B.~Schiele, T.~Darrell, and M.~Rohrbach.
   evidence.
 \newblock {\em arXiv preprint arXiv:1612.04757}, 2016.
 
+\bibitem{peyre2017weakly}
+J.~Peyre, J.~Sivic, I.~Laptev, and C.~Schmid.
+\newblock Weakly-supervised learning of visual relations.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision}, pages 5179--5188, 2017.
+
+\bibitem{pilania2013accelerating}
+G.~Pilania, C.~Wang, X.~Jiang, S.~Rajasekaran, and R.~Ramprasad.
+\newblock Accelerating materials property predictions using machine learning.
+\newblock {\em Scientific reports}, 3:2810, 2013.
+
+\bibitem{regier2015celeste}
+J.~Regier, A.~Miller, J.~McAuliffe, R.~Adams, M.~Hoffman, D.~Lang, D.~Schlegel,
+  and M.~Prabhat.
+\newblock Celeste: Variational inference for a generative model of astronomical
+  images.
+\newblock In {\em International Conference on Machine Learning}, pages
+  2095--2103, 2015.
+
+\bibitem{ren2015faster}
+S.~Ren, K.~He, R.~Girshick, and J.~Sun.
+\newblock Faster r-cnn: Towards real-time object detection with region proposal
+  networks.
+\newblock In {\em Advances in neural information processing systems}, pages
+  91--99, 2015.
+
 \bibitem{ronneberger2015u}
 O.~Ronneberger, P.~Fischer, and T.~Brox.
 \newblock U-net: Convolutional networks for biomedical image segmentation.
 \newblock In {\em International Conference on Medical image computing and
   computer-assisted intervention}, pages 234--241. Springer, 2015.
 
+\bibitem{russakovsky2015imagenet}
+O.~Russakovsky, J.~Deng, H.~Su, J.~Krause, S.~Satheesh, S.~Ma, Z.~Huang,
+  A.~Karpathy, A.~Khosla, M.~Bernstein, et~al.
+\newblock Imagenet large scale visual recognition challenge.
+\newblock {\em International journal of computer vision}, 115(3):211--252,
+  2015.
+
+\bibitem{sermanet2013overfeat}
+P.~Sermanet, D.~Eigen, X.~Zhang, M.~Mathieu, R.~Fergus, and Y.~LeCun.
+\newblock Overfeat: Integrated recognition, localization and detection using
+  convolutional networks.
+\newblock {\em arXiv preprint arXiv:1312.6229}, 2013.
+
+\bibitem{simonyan2014very}
+K.~Simonyan and A.~Zisserman.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock {\em arXiv preprint arXiv:1409.1556}, 2014.
+
+\bibitem{smith2016deep}
+L.~N. Smith and N.~Topin.
+\newblock Deep convolutional neural network design patterns.
+\newblock {\em arXiv preprint arXiv:1611.00847}, 2016.
+
+\bibitem{song2014learning}
+H.~O. Song, R.~Girshick, S.~Jegelka, J.~Mairal, Z.~Harchaoui, and T.~Darrell.
+\newblock On learning to localize objects with minimal supervision.
+\newblock {\em arXiv preprint arXiv:1403.1024}, 2014.
+
+\bibitem{szegedy2013deep}
+C.~Szegedy, A.~Toshev, and D.~Erhan.
+\newblock Deep neural networks for object detection.
+\newblock In {\em Advances in neural information processing systems}, pages
+  2553--2561, 2013.
+
+\bibitem{tang2016large}
+Y.~Tang, J.~Wang, B.~Gao, E.~Dellandr{\'e}a, R.~Gaizauskas, and L.~Chen.
+\newblock Large scale semi-supervised object detection using visual and
+  semantic knowledge transfer.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 2119--2128, 2016.
+
+\bibitem{vorontsov2019boosting}
+E.~Vorontsov, P.~Molchanov, W.~Byeon, S.~De~Mello, V.~Jampani, M.-Y. Liu,
+  S.~Kadoury, and J.~Kautz.
+\newblock Boosting segmentation with weak supervision from image-to-image
+  translation.
+\newblock {\em arXiv preprint arXiv:1904.01636}, 2019.
+
+\bibitem{ward2016general}
+L.~Ward, A.~Agrawal, A.~Choudhary, and C.~Wolverton.
+\newblock A general-purpose machine learning framework for predicting
+  properties of inorganic materials.
+\newblock {\em npj Computational Materials}, 2:16028, 2016.
+
+\bibitem{webb2018deep}
+S.~Webb.
+\newblock Deep learning for biology.
+\newblock {\em Nature}, 554(7693), 2018.
+
+\bibitem{xu2015show}
+K.~Xu, J.~Ba, R.~Kiros, K.~Cho, A.~Courville, R.~Salakhudinov, R.~Zemel, and
+  Y.~Bengio.
+\newblock Show, attend and tell: Neural image caption generation with visual
+  attention.
+\newblock In {\em International conference on machine learning}, pages
+  2048--2057, 2015.
+
 \bibitem{yosinski2015understanding}
 J.~Yosinski, J.~Clune, A.~Nguyen, T.~Fuchs, and H.~Lipson.
 \newblock Understanding neural networks through deep visualization.
 \newblock {\em arXiv preprint arXiv:1506.06579}, 2015.
+
+\bibitem{you2016image}
+Q.~You, H.~Jin, Z.~Wang, C.~Fang, and J.~Luo.
+\newblock Image captioning with semantic attention.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 4651--4659, 2016.
+
+\bibitem{zhang2016yin}
+P.~Zhang, Y.~Goyal, D.~Summers-Stay, D.~Batra, and D.~Parikh.
+\newblock Yin and yang: Balancing and answering binary visual questions.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 5014--5022, 2016.
 
 \end{thebibliography}
