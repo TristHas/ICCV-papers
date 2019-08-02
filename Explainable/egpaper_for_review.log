@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  2 AUG 2019 11:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  2 AUG 2019 11:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -512,8 +512,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 775.
  (./egpaper_for_review.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 775.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 775.
-Package rerunfilecheck Info: File `egpaper_for_review.brf' has not changed.
-(rerunfilecheck)             Checksum: 2E299435B8354A07A4D76D499CF04F88;2404.
+
+
+Package rerunfilecheck Warning: File `egpaper_for_review.brf' has changed.
+(rerunfilecheck)                Rerun to get bibliographical references right.
+
+Package rerunfilecheck Info: Checksums for `egpaper_for_review.brf':
+(rerunfilecheck)             Before: 2E299435B8354A07A4D76D499CF04F88;2404
+(rerunfilecheck)             After:  1E893521512F9E37B94272946838F286;2000.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 775.
  ) 
 Here is how much of TeX's memory you used:
@@ -543,7 +549,7 @@ blic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on egpaper_for_review.pdf (10 pages, 3279350 bytes).
+Output written on egpaper_for_review.pdf (10 pages, 3279357 bytes).
 PDF statistics:
  352 PDF objects out of 1000 (max. 8388607)
  296 compressed objects within 3 object streams
